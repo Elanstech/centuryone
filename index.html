@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+   
     <!-- Luxury Preloader -->
     <div class="preloader">
         <div class="loader-logo">
@@ -30,42 +31,78 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="logo1.png" alt="Century One Management" class="logo-light">
-                <img src="logo-dark.png" alt="Century One Management" class="logo-dark">
+ <!-- Navigation -->
+<header class="premium-header">
+    <div class="header-container">
+        <!-- ✨ Elegant Logo Section -->
+        <div class="logo-wrapper" data-aos="fade-down">
+            <a href="/" class="logo-link">
+                <img src="logo.png" alt="Century One Management" class="header-logo">
+                <!-- 🌟 Creative Logo Accent -->
+                <div class="logo-accent"></div>
+            </a>
+        </div>
+
+        <!-- 🎨 Premium Navigation -->
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item" data-aos="fade-down" data-aos-delay="100">
+                    <a href="#home" class="nav-link active">
+                        <span class="nav-text">Home</span>
+                        <span class="nav-line"></span>
+                    </a>
+                </li>
+                <li class="nav-item" data-aos="fade-down" data-aos-delay="200">
+                    <a href="#services" class="nav-link">
+                        <span class="nav-text">Services</span>
+                        <span class="nav-line"></span>
+                    </a>
+                </li>
+                <li class="nav-item" data-aos="fade-down" data-aos-delay="300">
+                    <a href="#properties" class="nav-link">
+                        <span class="nav-text">Properties</span>
+                        <span class="nav-line"></span>
+                    </a>
+                </li>
+                <li class="nav-item" data-aos="fade-down" data-aos-delay="400">
+                    <a href="#about" class="nav-link">
+                        <span class="nav-text">About</span>
+                        <span class="nav-line"></span>
+                    </a>
+                </li>
+                <li class="nav-item" data-aos="fade-down" data-aos-delay="500">
+                    <a href="#contact" class="nav-link">
+                        <span class="nav-text">Contact</span>
+                        <span class="nav-line"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- ✨ Portal Access Buttons -->
+        <div class="header-buttons" data-aos="fade-down" data-aos-delay="600">
+            <a href="#tenant" class="portal-btn tenant-portal">
+                <i class="fas fa-user"></i>
+                <span>Tenant Portal</span>
             </a>
             
-            <div class="nav-menu">
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#services">Services <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="services.html#residential">Residential Management</a></li>
-                            <li><a href="services.html#commercial">Commercial Management</a></li>
-                            <li><a href="services.html#luxury">Luxury Properties</a></li>
-                            <li><a href="services.html#consulting">Investment Consulting</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#properties">Properties</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                
-                <div class="nav-cta">
-                    <a href="#" class="btn-portal tenant">Tenant Portal</a>
-                    <a href="#consultation" class="btn-primary">Get Started</a>
-                </div>
-            </div>
-            
-            <div class="nav-toggle">
-                <span></span><span></span><span></span>
-            </div>
+            <a href="#contact" class="cta-btn">
+                <span>Get Started</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
-    </nav>
+
+        <!-- 🌟 Mobile Menu Toggle -->
+        <button class="mobile-toggle" aria-label="Menu">
+            <span class="toggle-line"></span>
+            <span class="toggle-line"></span>
+            <span class="toggle-line"></span>
+        </button>
+    </div>
+
+    <!-- ✨ Gradient Border Effect -->
+    <div class="header-border"></div>
+</header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
