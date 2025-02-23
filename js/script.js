@@ -53,263 +53,90 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ✨ Sophisticated Header Controller
-    class EnchantedHeader {
-    constructor() {
-        // 🌟 Magical Element Selection
-        this.header = document.querySelector('.premium-header');
-        this.logo = document.querySelector('.header-logo');
-        this.mobileToggle = document.querySelector('.mobile-toggle');
-        this.navLinks = document.querySelectorAll('.nav-link');
-        this.lastScroll = 0;
-        this.isAnimating = false;
-        this.sparkleColors = ['#FFD700', '#FFF', '#046307'];
-        
-        // ✨ Initialize Magic
-        this.init();
-    }
-
-    // 🎨 Initialize Magical Features
-    init() {
-        this.handleScroll = this.handleScroll.bind(this);
-        this.addMagicalListeners();
-        this.initEnchantedMenu();
-        this.initMagicalNavigation();
-        this.createStarryBackground();
-    }
-
-    // ✨ Add Magical Event Listeners
-    addMagicalListeners() {
-        window.addEventListener('scroll', () => {
-            if (!this.isAnimating) {
-                requestAnimationFrame(() => {
-                    this.handleMagicalScroll();
-                    this.isAnimating = false;
-                });
-                this.isAnimating = true;
-            }
-        });
-
-        // 🌟 Add Hover Magic to Logo 
-        this.logo?.addEventListener('mouseenter', () => this.addLogoSparkles());
-    }
-
-    // 🎭 Handle Magical Scroll Effects
-    handleMagicalScroll() {
-        const currentScroll = window.pageYOffset;
-        const scrollProgress = Math.min(currentScroll / window.innerHeight, 1);
-
-        // ✨ Enchanted Parallax Effect
-        if (currentScroll <= window.innerHeight) {
-            this.header.style.transform = `translateY(${currentScroll * 0.4}px)`;
-            this.applyMagicalBlur(scrollProgress);
+    class PremiumHeader {
+        constructor() {
+            this.header = document.querySelector('.premium-header');
+            this.logo = document.querySelector('.header-logo');
+            this.mobileToggle = document.querySelector('.mobile-toggle');
+            this.navLinks = document.querySelectorAll('.nav-link');
+            this.lastScroll = 0;
+            this.init();
         }
 
-        // 🌟 Magical Visibility Control
-        if (currentScroll > 50) {
-            this.addEnchantedState();
-        } else {
-            this.removeEnchantedState();
+        init() {
+            this.handleScroll = this.handleScroll.bind(this);
+            window.addEventListener('scroll', () => requestAnimationFrame(this.handleScroll));
+            this.initMobileMenu();
+            this.initNavigation();
         }
 
-        // 🎨 Smart Header Hide/Show with Easing
-        if (currentScroll > this.lastScroll && currentScroll > 500) {
-            this.hideHeaderWithMagic();
-        } else {
-            this.showHeaderWithMagic();
-        }
-
-        this.lastScroll = currentScroll;
-    }
-
-    // ✨ Add Enchanted State
-    addEnchantedState() {
-        this.header.classList.add('enchanted');
-        this.addMagicalGlow();
-        this.updateLogoMagically();
-    }
-
-    // 🌟 Remove Enchanted State
-    removeEnchantedState() {
-        this.header.classList.remove('enchanted');
-        this.removeMagicalGlow();
-        this.resetLogoMagically();
-    }
-
-    // 🎨 Magical Glow Effects
-    addMagicalGlow() {
-        this.header.style.boxShadow = '0 10px 30px -10px rgba(4, 99, 7, 0.1)';
-        this.header.style.animation = 'magicalGlow 2s infinite';
-    }
-
-    removeMagicalGlow() {
-        this.header.style.boxShadow = 'none';
-        this.header.style.animation = 'none';
-    }
-
-    // ✨ Logo Animation Magic
-    updateLogoMagically() {
-        this.logo?.style.transform = 'scale(0.9)';
-        this.addSparkleEffect(this.logo);
-    }
-
-    resetLogoMagically() {
-        this.logo?.style.transform = 'scale(1)';
-    }
-
-    // 🌟 Create Magical Sparkles
-    addSparkleEffect(element) {
-        for (let i = 0; i < 5; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'magical-sparkle';
-            sparkle.style.left = `${Math.random() * 100}%`;
-            sparkle.style.top = `${Math.random() * 100}%`;
-            sparkle.style.backgroundColor = this.sparkleColors[Math.floor(Math.random() * this.sparkleColors.length)];
-            sparkle.style.animationDelay = `${Math.random() * 1000}ms`;
+        handleScroll() {
+            const currentScroll = window.pageYOffset;
             
-            element.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
-        }
-    }
-
-    // 🎭 Enchanted Mobile Menu
-    initEnchantedMenu() {
-        this.mobileToggle?.addEventListener('click', () => {
-            this.toggleMagicalMenu();
-            this.createMagicalMenuEffect();
-        });
-    }
-
-    // ✨ Toggle Magical Menu
-    toggleMagicalMenu() {
-        const nav = document.querySelector('.main-nav');
-        const isOpen = nav.classList.contains('active');
-
-        nav.style.transition = 'all 0.6s cubic-bezier(0.7, 0, 0.3, 1)';
-        
-        if (!isOpen) {
-            nav.classList.add('active');
-            this.animateMagicalMenuLines(true);
-            this.createMagicalParticles(nav);
-        } else {
-            nav.classList.remove('active');
-            this.animateMagicalMenuLines(false);
-        }
-    }
-
-    // 🎨 Animate Menu Lines Magically
-    animateMagicalMenuLines(isOpen) {
-        const lines = this.mobileToggle.querySelectorAll('.toggle-line');
-        
-        lines.forEach((line, index) => {
-            line.style.transition = `
-                transform 0.6s cubic-bezier(0.7, 0, 0.3, 1) ${index * 0.1}s,
-                opacity 0.6s cubic-bezier(0.7, 0, 0.3, 1) ${index * 0.1}s
-            `;
-
-            if (isOpen) {
-                switch(index) {
-                    case 0:
-                        line.style.transform = 'rotate(45deg) translate(8px, 8px)';
-                        break;
-                    case 1:
-                        line.style.opacity = '0';
-                        line.style.transform = 'translateX(20px)';
-                        break;
-                    case 2:
-                        line.style.transform = 'rotate(-45deg) translate(8px, -8px)';
-                        break;
-                }
+            // Elegant scroll state handling
+            if (currentScroll > 50) {
+                this.header.classList.add('scrolled');
+                this.addHeaderGlow();
             } else {
-                line.style.transform = 'none';
-                line.style.opacity = '1';
+                this.header.classList.remove('scrolled');
+                this.removeHeaderGlow();
             }
-        });
-    }
 
-    // ✨ Create Magical Navigation
-    initMagicalNavigation() {
-        this.navLinks.forEach(link => {
-            link.addEventListener('mouseenter', () => this.addLinkMagic(link));
-            link.addEventListener('click', (e) => this.handleMagicalNavClick(e, link));
-        });
-    }
+            // Creative hide/show animation
+            if (currentScroll > this.lastScroll && currentScroll > 500) {
+                this.header.style.transform = 'translateY(-100%)';
+            } else {
+                this.header.style.transform = 'translateY(0)';
+            }
 
-    // 🌟 Add Link Magic
-    addLinkMagic(link) {
-        this.addSparkleEffect(link);
-        link.style.transform = 'translateY(-2px)';
-        setTimeout(() => link.style.transform = 'none', 300);
-    }
+            this.lastScroll = currentScroll;
+        }
 
-    // 🎭 Handle Magical Navigation Click
-    handleMagicalNavClick(e, link) {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        
-        if (target) {
-            this.scrollWithMagic(target);
-            this.addClickMagic(link);
+        addHeaderGlow() {
+            this.header.style.boxShadow = '0 10px 30px -10px rgba(4, 99, 7, 0.1)';
+        }
+
+        removeHeaderGlow() {
+            this.header.style.boxShadow = 'none';
+        }
+
+        initMobileMenu() {
+            this.mobileToggle.addEventListener('click', () => {
+                this.mobileToggle.classList.toggle('active');
+                document.querySelector('.main-nav').classList.toggle('active');
+                this.animateMenuLines();
+            });
+        }
+
+        animateMenuLines() {
+            const lines = this.mobileToggle.querySelectorAll('.toggle-line');
+            lines.forEach((line, index) => {
+                line.style.transition = `transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
+            });
+        }
+
+        initNavigation() {
+            this.navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        this.smoothScroll(target);
+                    }
+                });
+            });
+        }
+
+        smoothScroll(target) {
+            const headerHeight = this.header.offsetHeight;
+            const targetPosition = target.offsetTop - headerHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
     }
-
-    // ✨ Scroll with Magic
-    scrollWithMagic(target) {
-        const headerHeight = this.header.offsetHeight;
-        const targetPosition = target.offsetTop - headerHeight;
-
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    }
-
-    // 🎨 Add Click Magic
-    addClickMagic(element) {
-        const circle = document.createElement('div');
-        circle.className = 'magical-click';
-        element.appendChild(circle);
-
-        setTimeout(() => circle.remove(), 1000);
-    }
-
-    // 🌟 Create Starry Background
-    createStarryBackground() {
-        const starContainer = document.createElement('div');
-        starContainer.className = 'magical-stars';
-        this.header.appendChild(starContainer);
-
-        for (let i = 0; i < 50; i++) {
-            const star = document.createElement('div');
-            star.className = 'magical-star';
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.top = `${Math.random() * 100}%`;
-            star.style.animationDelay = `${Math.random() * 2}s`;
-            starContainer.appendChild(star);
-        }
-    }
-
-    // ✨ Apply Magical Blur Effect
-    applyMagicalBlur(progress) {
-        const blurAmount = progress * 10;
-        this.header.style.backdropFilter = `blur(${blurAmount}px)`;
-    }
-
-    // 🎭 Header Show/Hide Magic
-    hideHeaderWithMagic() {
-        this.header.style.transform = 'translateY(-100%)';
-        this.header.style.transition = 'transform 0.6s cubic-bezier(0.7, 0, 0.3, 1)';
-    }
-
-    showHeaderWithMagic() {
-        this.header.style.transform = 'translateY(0)';
-        this.header.style.transition = 'transform 0.6s cubic-bezier(0.7, 0, 0.3, 1)';
-    }
-}
-
-// ✨ Initialize Enchanted Header
-document.addEventListener('DOMContentLoaded', () => {
-    new EnchantedHeader();
-});
 
     // 🎨 Creative Stats Animation
     class LuxuryStats {
