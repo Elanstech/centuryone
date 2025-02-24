@@ -4,9 +4,13 @@
     --primary: #046307;
     --primary-dark: #035206;
     --primary-light: #057308;
-    --accent: #FFD700;
-    --accent-dark: #E5C200;
-    --accent-light: #FFE44D;
+    
+    /* Metallic Gold Colors */
+    --accent: #D4AF37; /* Base metallic gold */
+    --accent-dark: #996515; /* Darker gold for shadows */
+    --accent-light: #F5D76E; /* Lighter gold for highlights */
+    --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 40%, #B38728 50%, #FBF5B7 60%, #AA771C 100%);
+    --gold-gradient-muted: linear-gradient(135deg, rgba(191, 149, 63, 0.8) 0%, rgba(252, 246, 186, 0.9) 40%, rgba(179, 135, 40, 0.8) 50%, rgba(251, 245, 183, 0.9) 60%, rgba(170, 119, 28, 0.8) 100%);
     
     /* Neutral Colors */
     --text: #333333;
@@ -16,7 +20,8 @@
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    --gradient-accent: var(--gold-gradient);
+    --gradient-accent-muted: var(--gold-gradient-muted);
     --gradient-light: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
     --gradient-dark: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
     
@@ -25,6 +30,7 @@
     --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
     --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
     --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+    --gold-shadow: 0 5px 15px rgba(191, 149, 63, 0.3);
     
     /* Animations */
     --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -129,6 +135,11 @@ h3 {
     animation: loading 2s ease-in-out infinite;
 }
 
+.preloader.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
 @keyframes logoFloat {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -138,6 +149,16 @@ h3 {
     0% { width: 0; left: 0; }
     50% { width: 100%; left: 0; }
     100% { width: 0; left: 100%; }
+}
+
+@keyframes logoEntrance {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
 }
 
 @media (max-width: 768px) {
@@ -161,6 +182,13 @@ h3 {
     z-index: 1000;
     padding: 1px 0; /* Reduced from 15px to 8px */
     transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.premium-header.scrolled {
+    position: fixed;
+    background: rgba(3, 70, 5, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px -10px rgba(4, 99, 7, 0.1);
 }
 
 /* Header Container */
@@ -251,6 +279,17 @@ h3 {
     opacity: 1;
 }
 
+/* Enhanced active link style */
+.nav-link.active {
+    position: relative;
+}
+
+.nav-link.active::before,
+.nav-link.active::after {
+    background: var(--gold-gradient);
+    height: 2px;
+}
+
 /* Header Buttons */
 .header-buttons {
     display: flex;
@@ -287,9 +326,7 @@ h3 {
 /* CTA Button */
 .cta-btn {
     padding: 10px 26px;
-    background: linear-gradient(135deg, 
-        var(--accent) 0%, 
-        var(--primary-light) 100%);
+    position: relative;
     color: var(--white);
     border-radius: 50px;
     font-size: 1.6rem;
@@ -301,21 +338,30 @@ h3 {
     transition: all 0.4s cubic-bezier(0.7, 0, 0.3, 1);
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .cta-btn::before {
     content: '';
     position: absolute;
+    inset: 0;
+    background: var(--gold-gradient);
+    z-index: -1;
+}
+
+.cta-btn::after {
+    content: '';
+    position: absolute;
     top: 0;
-    left: 0;
+    left: -100%;
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg,
         rgba(255,255,255,0) 0%,
         rgba(255,255,255,0.2) 50%,
         rgba(255,255,255,0) 100%);
-    transform: translateX(-100%);
     transition: transform 0.6s ease;
+    z-index: -1;
 }
 
 .cta-btn:hover {
@@ -323,8 +369,8 @@ h3 {
     box-shadow: 0 20px 30px rgba(4, 99, 7, 0.2);
 }
 
-.cta-btn:hover::before {
-    transform: translateX(100%);
+.cta-btn:hover::after {
+    transform: translateX(200%);
 }
 
 .cta-btn i {
@@ -363,7 +409,7 @@ h3 {
     }
 
     .header-logo {
-        width: 260px;
+        width: 240px;
     }
 
     .nav-list {
@@ -377,7 +423,7 @@ h3 {
 
 @media (max-width: 1200px) {
     .header-logo {
-        width: 240px;
+        width: 220px;
     }
 
     .nav-list {
@@ -403,6 +449,7 @@ h3 {
         gap: 30px;
         padding: 40px;
         transition: right 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+        z-index: 1000;
     }
 
     .nav-list.active {
@@ -424,11 +471,11 @@ h3 {
     }
 
     .header-logo {
-        width: 200px;
+        width: 180px;
     }
 }
 
-/* Redesigned Hero Section Styles */
+/* Hero Section - Redesigned with Metallic Gold */
 .hero {
     position: relative;
     height: 100vh;
@@ -489,20 +536,26 @@ h3 {
     padding-top: 6rem;
 }
 
+/* Gold badge with metallic effect */
 .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
-    background: rgba(255, 215, 0, 0.15);
-    border: 1px solid var(--accent);
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid;
+    border-image: var(--gold-gradient) 1;
     padding: 0.8rem 1.6rem;
     border-radius: 50px;
     margin-bottom: 2.5rem;
     backdrop-filter: blur(4px);
+    box-shadow: var(--gold-shadow);
 }
 
 .hero-badge i {
-    color: var(--accent);
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-badge span {
@@ -520,6 +573,12 @@ h3 {
 
 .text-accent {
     color: var(--accent);
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 700;
 }
 
 .hero-description {
@@ -542,7 +601,7 @@ h3 {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--primary-light) 100%);
+    background: rgba(0, 0, 0, 0.5);
     color: var(--white);
     padding: 1.4rem 3rem;
     border-radius: 50px;
@@ -550,32 +609,58 @@ h3 {
     font-weight: 600;
     text-decoration: none;
     transition: var(--transition-medium);
-    box-shadow: 0 10px 20px rgba(4, 99, 7, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
+    border: 1px solid transparent;
+    z-index: 1;
 }
 
 .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold-gradient);
+    z-index: -1;
+}
+
+.btn-primary::after {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-        rgba(255,255,255,0) 0%, 
-        rgba(255,255,255,0.3) 50%, 
+    background: linear-gradient(90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.3) 50%,
         rgba(255,255,255,0) 100%);
+    z-index: 0;
     transition: var(--transition-medium);
 }
 
 .btn-primary:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(4, 99, 7, 0.3);
+    box-shadow: 0 15px 30px rgba(191, 149, 63, 0.3);
 }
 
-.btn-primary:hover::before {
+.btn-primary:hover::after {
     left: 100%;
+}
+
+.btn-primary span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-primary i {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover i {
+    transform: translateX(5px);
 }
 
 .btn-secondary {
@@ -597,9 +682,18 @@ h3 {
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-5px);
+    border-color: var(--accent-light);
 }
 
-/* Feature Cards */
+.btn-secondary i {
+    transition: transform 0.3s ease;
+}
+
+.btn-secondary:hover i {
+    transform: translateX(5px);
+}
+
+/* Feature Cards with metallic gold accents */
 .hero-features {
     display: grid;
     grid-template-columns: 1fr;
@@ -643,29 +737,50 @@ h3 {
     width: 50px;
     height: 50px;
     min-width: 50px;
-    background: rgba(255, 215, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--accent);
     font-size: 2rem;
     transition: var(--transition-medium);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold-gradient-muted);
+    opacity: 0.8;
+    z-index: 0;
+}
+
+.feature-icon i {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
 }
 
 .feature-card:hover .feature-icon {
-    background: var(--accent);
-    color: var(--primary-dark);
     transform: rotateY(360deg);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 20px rgba(191, 149, 63, 0.4);
+}
+
+.feature-card:hover .feature-icon::before {
+    animation: gold-shimmer 2s infinite;
 }
 
 .feature-card h3 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: var(--accent);
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .feature-card p {
@@ -695,8 +810,37 @@ h3 {
 
 .hero-scroll i {
     font-size: 2rem;
-    color: var(--accent);
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     animation: bounce 2s infinite;
+}
+
+/* Particles for hero section */
+.particle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: float-particle 3s infinite ease-in-out;
+}
+
+/* Metallic gold animations */
+@keyframes gold-shimmer {
+    0% {
+        opacity: 0.7;
+        background-position: 0% 50%;
+    }
+    50% {
+        opacity: 1;
+        background-position: 100% 50%;
+    }
+    100% {
+        opacity: 0.7;
+        background-position: 0% 50%;
+    }
 }
 
 @keyframes bounce {
@@ -708,6 +852,15 @@ h3 {
     }
     60% {
         transform: translateY(-5px);
+    }
+}
+
+@keyframes float-particle {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-20px) translateX(10px);
     }
 }
 
