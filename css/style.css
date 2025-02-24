@@ -1,41 +1,42 @@
-/* Premium Property Management CSS */
 :root {
-    /* Primary Colors */
-    --primary: #046307;
-    --primary-dark: #035206;
-    --primary-light: #057308;
-    --accent: #FFD700;
-    --accent-dark: #E5C200;
-    --accent-light: #FFE44D;
+    /* Brand Colors */
+    --primary: #002e1a;
+    --primary-light: #00684a;
+    --primary-dark: #001b0f;
+    --accent: #004d2e;
     
-    /* Neutral Colors */
-    --text: #333333;
-    --text-light: #666666;
+    /* Base Colors */
     --white: #FFFFFF;
-    --light-bg: #F8F9FA;
+    --black: #000000;
+    --gray-light: #F5F5F5;
+    --gray-medium: #9E9E9E;
+    --gray-dark: #424242;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-    --gradient-light: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
-    --gradient-dark: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+    --gradient-primary: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    
+    /* Overlays */
+    --glass-bg: rgba(0, 46, 26, 0.2);
+    --glass-hover: rgba(0, 46, 26, 0.3);
+    --overlay: rgba(0, 46, 26, 0.85);
     
     /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-    --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
     
-    /* Animations */
-    --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-medium: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Spacing */
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
     
     /* Border Radius */
     --radius-sm: 4px;
     --radius-md: 8px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
+    --radius-lg: 12px;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-normal: 0.3s ease;
 }
 
 /* Modern CSS Reset */
