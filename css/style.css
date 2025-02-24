@@ -155,11 +155,11 @@ h3 {
 /* Header */
 .premium-header {
     position: absolute;
-    top: 30px; /* Add a specific top value */
+    top: 0; /* Change from 30px to 0 */
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 0; /* Change from 30px 0 to 0 */
+    padding: 15px 0; /* Add minimal padding */
     transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
@@ -539,8 +539,8 @@ h3 {
     position: relative;
     overflow: hidden;
     display: flex;
-    align-items: center;
-    padding-top: 0px;
+    align-items: flex-start; /* Change from center to flex-start */
+    padding-top: 120px; /* Add padding to push content below header */
 }
 
 .hero-video {
@@ -571,6 +571,7 @@ h3 {
     position: relative;
     z-index: 1;
     color: var(--white);
+    padding-top: 60px; /* Add some space between header and content */
 }
 
 .hero h1 {
