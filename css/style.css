@@ -169,22 +169,28 @@ h3 {
     }
 }
 
-/* Header */
+/* Header - Complete Styling with Improved Scroll Behavior */
 .premium-header {
-    position: fixed; /* Changed from absolute to fixed */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 1px 0;
-    transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+    padding: 1rem 0;
+    transition: all 0.4s cubic-bezier(0.7, 0, 0.3, 1);
     background: transparent;
+    transform: translateY(0);
 }
 
 .premium-header.scrolled {
-    background: rgba(3, 70, 5, 0.9);
+    background: rgba(3, 70, 5, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px -10px rgba(4, 99, 7, 0.1);
+    padding: 0.6rem 0;
+}
+
+.premium-header.hidden {
+    transform: translateY(-100%);
 }
 
 /* Header Container */
@@ -209,9 +215,14 @@ h3 {
 }
 
 .header-logo {
-    width: 260px; /* Slightly reduced from 280px */
+    width: 220px; /* Reduced size */
     height: auto;
     filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.1));
+    transition: var(--transition-medium);
+}
+
+.scrolled .header-logo {
+    width: 180px; /* Even smaller when scrolled */
 }
 
 /* Navigation */
@@ -398,6 +409,19 @@ h3 {
     transform-origin: center;
 }
 
+/* Mobile Menu Styles */
+.mobile-toggle.active .toggle-line:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.mobile-toggle.active .toggle-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-toggle.active .toggle-line:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
 /* Responsive Design */
 @media (max-width: 1400px) {
     .header-container {
@@ -405,7 +429,11 @@ h3 {
     }
 
     .header-logo {
-        width: 240px;
+        width: 200px;
+    }
+    
+    .scrolled .header-logo {
+        width: 160px;
     }
 
     .nav-list {
@@ -419,7 +447,11 @@ h3 {
 
 @media (max-width: 1200px) {
     .header-logo {
-        width: 220px;
+        width: 180px;
+    }
+    
+    .scrolled .header-logo {
+        width: 140px;
     }
 
     .nav-list {
@@ -427,7 +459,13 @@ h3 {
     }
 
     .portal-btn {
+        padding: 8px 16px;
+        font-size: 1.4rem;
+    }
+    
+    .cta-btn {
         padding: 8px 20px;
+        font-size: 1.4rem;
     }
 }
 
@@ -446,6 +484,7 @@ h3 {
         padding: 40px;
         transition: right 0.6s cubic-bezier(0.7, 0, 0.3, 1);
         z-index: 1000;
+        overflow-y: auto;
     }
 
     .nav-list.active {
@@ -467,7 +506,11 @@ h3 {
     }
 
     .header-logo {
-        width: 180px;
+        width: 160px;
+    }
+    
+    .scrolled .header-logo {
+        width: 120px;
     }
 }
 
