@@ -87,7 +87,7 @@ h3 {
     font-weight: 600;
 }
 
-/* Luxury Preloader - Elegant Redesign */
+/* Luxury Preloader - Refined */
 .preloader {
     position: fixed;
     top: 0;
@@ -107,7 +107,6 @@ h3 {
     width: 400px; /* Keeping the same size as requested */
     height: auto;
     animation: logoFadeIn 1s ease-out;
-    margin-bottom: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -363,7 +362,7 @@ h3 {
 
 .cta-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 20px 30px rgba(4, 99, 7, 0.2);
+    box-shadow: 0 20px 30px rgba(191, 149, 63, 0.2);
 }
 
 .cta-btn:hover::after {
@@ -948,7 +947,7 @@ h3 {
     width: 80px;
     height: 80px;
     margin: 0 auto 2rem;
-    background: var(--gradient-primary);
+    background: var(--gold-gradient);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -966,7 +965,7 @@ h3 {
     left: -5px;
     right: -5px;
     bottom: -5px;
-    border: 2px solid var(--primary);
+    border: 2px solid var(--accent);
     border-radius: 50%;
     animation: pulse 2s infinite;
 }
@@ -986,6 +985,13 @@ h3 {
     font-size: 1.8rem;
     font-weight: 500;
     color: var(--text);
+}
+
+/* Responsive Design for Stats */
+@media (max-width: 1200px) {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Luxury About Section Styling */
