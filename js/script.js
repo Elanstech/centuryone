@@ -43,42 +43,30 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastScroll = 0;
     
     // Scroll handler for header
-   // Scroll handler for header
-const handleScroll = () => {
+ const handleScroll = () => {
     const currentScroll = window.pageYOffset;
+    const heroSection = document.querySelector('.hero');
+    const heroHeight = heroSection ? heroSection.offsetHeight : 0;
     
-    // Handle header appearance
+    // Handle header appearance based on scroll position
     if (currentScroll > 50) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
+    
+    // Show/hide header based on scroll direction AND position
+    if (currentScroll > lastScroll && currentScroll > heroHeight) {
+        // Scrolling DOWN and past the hero section - hide header
+        header.style.transform = 'translateY(-100%)';
+    } else {
+        // Scrolling UP or still within hero section - show header
+        header.style.transform = 'translateY(0)';
+    }
 
     lastScroll = currentScroll;
 };
-
-    // Mobile Menu Toggle
-    if (mobileToggle && navList) {
-        mobileToggle.addEventListener('click', () => {
-            mobileToggle.classList.toggle('active');
-            navList.classList.toggle('active');
-            
-            // Animate toggle lines
-            const lines = mobileToggle.querySelectorAll('.toggle-line');
-            if (mobileToggle.classList.contains('active')) {
-                // Animate to X
-                if (lines[0]) lines[0].style.transform = 'translateY(10px) rotate(45deg)';
-                if (lines[1]) lines[1].style.opacity = '0';
-                if (lines[2]) lines[2].style.transform = 'translateY(-10px) rotate(-45deg)';
-            } else {
-                // Reset to hamburger
-                if (lines[0]) lines[0].style.transform = 'translateY(0) rotate(0)';
-                if (lines[1]) lines[1].style.opacity = '1';
-                if (lines[2]) lines[2].style.transform = 'translateY(0) rotate(0)';
-            }
-        });
-    }
-
+    
     // Navigation Smooth Scroll
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
