@@ -167,7 +167,7 @@ h3 {
 .header-container {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 15px 60px; /* Reduce top/bottom padding from default */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -210,7 +210,7 @@ h3 {
 /* ✨ Premium Navigation */
 .nav-list {
     display: flex;
-    gap: 50px;
+    gap: 40px; /* Slightly reduce gap if needed */
     margin: 0;
     padding: 0;
     list-style: none;
@@ -226,7 +226,7 @@ h3 {
     text-decoration: none;
     font-size: 1.8rem;
     font-weight: 500;
-    padding: 8px 0;
+    padding: 4px 0; /* Reduce padding */
     position: relative;
     transition: all 0.4s ease;
     display: inline-flex;
@@ -288,7 +288,7 @@ h3 {
 }
 
 .portal-btn {
-    padding: 12px 24px;
+    padding: 8px 20px; /* Reduce padding */
     border-radius: 50px;
     font-size: 1.6rem;
     font-weight: 600;
@@ -353,7 +353,7 @@ h3 {
 
 /* ✨ Get Started Button */
 .cta-btn {
-    padding: 14px 32px;
+    padding: 10px 28px; /* Reduce padding */
     background: linear-gradient(135deg, 
         var(--accent) 0%, 
         var(--primary-light) 100%);
@@ -464,11 +464,11 @@ h3 {
 /* 📱 Premium Responsive Design */
 @media (max-width: 1400px) {
     .header-container {
-        padding: 0 40px;
+        padding: 10px 40px; /* Reduce padding further on smaller screens */
     }
-
+    
     .header-logo {
-        width: 280px;
+        width: 260px; /* Slightly smaller on medium screens */
     }
 
     .nav-list {
