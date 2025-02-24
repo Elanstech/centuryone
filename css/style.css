@@ -177,22 +177,14 @@ h3 {
 /* 🌟 Magical Logo */
 .logo-wrapper {
     position: relative;
-    transform-origin: left center;
-    transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
 .logo-wrapper:hover {
-    transform: scale(1.02);
+    transform: none; /* Remove hover scale effect */
 }
 
 .logo-wrapper::after {
-    content: '';
-    position: absolute;
-    inset: -10px;
-    border: 2px solid var(--accent);
-    opacity: 0;
-    transform: scale(0.95);
-    transition: all 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+    display: none; /* Remove the box effect on hover */
 }
 
 .logo-wrapper:hover::after {
@@ -201,10 +193,15 @@ h3 {
 }
 
 .header-logo {
-    width: 320px;
+    width: 280px;
     height: auto;
     filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.1));
     transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+    /* Image will maintain its natural dimensions */
+}
+
+.header-logo:hover {
+    filter: drop-shadow(0 10px 25px rgba(255, 255, 255, 0.2));
 }
 
 /* ✨ Premium Navigation */
