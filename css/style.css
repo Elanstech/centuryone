@@ -648,7 +648,7 @@ h3 {
 
 .feature-content h3 {
     font-size: 1.8rem;
-    color: var(--white);
+    color: var(--white); /* Ensuring text is white */
     margin-bottom: 0.8rem;
     font-family: 'Playfair Display', serif;
 }
@@ -1226,8 +1226,8 @@ blockquote {
 }
 
 .feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
 }
 
 .feature-card:hover::before {
