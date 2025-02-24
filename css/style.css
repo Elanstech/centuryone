@@ -623,24 +623,27 @@ h3 {
     display: flex;
     align-items: flex-start;
     gap: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 2rem;
     border-radius: var(--radius-lg);
     transition: var(--transition-medium);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .feature-card:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.7);
     transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent);
 }
 
 .feature-icon {
     width: 50px;
     height: 50px;
     min-width: 50px;
-    background: rgba(255, 215, 0, 0.15);
+    background: rgba(255, 215, 0, 0.3);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -648,24 +651,29 @@ h3 {
     color: var(--accent);
     font-size: 2rem;
     transition: var(--transition-medium);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
 .feature-card:hover .feature-icon {
     background: var(--accent);
     color: var(--primary-dark);
     transform: rotateY(360deg);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
 .feature-card h3 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    color: var(--accent);
 }
 
 .feature-card p {
     font-size: 1.4rem;
-    opacity: 0.85;
+    color: var(--white);
     margin: 0;
+    opacity: 0.95;
+    line-height: 1.5;
 }
 
 /* Scroll Indicator */
