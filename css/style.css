@@ -606,7 +606,7 @@ h3 {
     transform: translateY(-3px);
 }
 
-/* Feature Cards - Modified to maintain hover state by default */
+/* Feature Cards - Modified to always show elevated state */
 .hero-features {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -625,14 +625,7 @@ h3 {
     display: flex;
     align-items: flex-start;
     gap: 2rem;
-    transform: translateY(-5px); /* Default elevated position */
-    transition: all 0.3s ease;
-}
-
-/* Removing hover effects since they're applied by default */
-.feature-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.1);
 }
 
 .feature-icon {
