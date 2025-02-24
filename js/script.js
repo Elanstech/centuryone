@@ -43,27 +43,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastScroll = 0;
     
     // Scroll handler for header
-    const handleScroll = () => {
-        const currentScroll = window.pageYOffset;
-        
-        // Handle header appearance
-        if (currentScroll > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+   // Scroll handler for header
+const handleScroll = () => {
+    const currentScroll = window.pageYOffset;
+    
+    // Handle header appearance
+    if (currentScroll > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
 
-        // Hide/show header on scroll
-        if (currentScroll > lastScroll && currentScroll > 500) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
-        }
-
-        lastScroll = currentScroll;
-    };
-
-    window.addEventListener('scroll', () => requestAnimationFrame(handleScroll));
+    lastScroll = currentScroll;
+};
 
     // Mobile Menu Toggle
     if (mobileToggle && navList) {
