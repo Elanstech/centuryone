@@ -35,62 +35,91 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 200);
     }
 
-    // Header Scroll Effects
+   // Header Scroll Behavior
+document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.premium-header');
     const mobileToggle = document.querySelector('.mobile-toggle');
     const navList = document.querySelector('.nav-list');
-    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Variables for scroll handling
     let lastScroll = 0;
+    let scrollTimer;
     
-    // Scroll handler for header
- const handleScroll = () => {
-    const currentScroll = window.pageYOffset;
-    const heroSection = document.querySelector('.hero');
-    const heroHeight = heroSection ? heroSection.offsetHeight : 0;
+    // Handle scroll events for the header
+    const handleScroll = () => {
+        const currentScroll = window.pageYOffset;
+        const heroSection = document.querySelector('.hero');
+        const heroHeight = heroSection ? heroSection.offsetHeight - 200 : 0; // Threshold near bottom of hero
+        
+        // Add scrolled class when scrolled down even a little
+        if (currentScroll > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        // Hide header when scrolling down and below hero section
+        // Show header when scrolling up
+        if (currentScroll > lastScroll && currentScroll > heroHeight) {
+            // Scrolling DOWN - hide header after a short delay
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => {
+                if (!navList.classList.contains('active')) { // Don't hide if mobile menu is open
+                    header.classList.add('hidden');
+                }
+            }, 150); // Short delay before hiding to avoid flickering
+        } else {
+            // Scrolling UP - show header immediately
+            clearTimeout(scrollTimer);
+            header.classList.remove('hidden');
+        }
+        
+        lastScroll = currentScroll;
+    };
     
-    // Handle header appearance based on scroll position
-    if (currentScroll > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-    
-    // Show/hide header based on scroll direction AND position
-    if (currentScroll > lastScroll && currentScroll > heroHeight) {
-        // Scrolling DOWN and past the hero section - hide header
-        header.style.transform = 'translateY(-100%)';
-    } else {
-        // Scrolling UP or still within hero section - show header
-        header.style.transform = 'translateY(0)';
-    }
-
-    lastScroll = currentScroll;
-};
-    
-    // Navigation Smooth Scroll
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
+    // Mobile menu toggle
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navList.classList.toggle('active');
             
-            // Close mobile menu if open
-            if (navList && navList.classList.contains('active')) {
-                navList.classList.remove('active');
-                if (mobileToggle) mobileToggle.classList.remove('active');
-                
-                // Reset toggle lines
-                const lines = mobileToggle.querySelectorAll('.toggle-line');
-                if (lines[0]) lines[0].style.transform = 'translateY(0) rotate(0)';
-                if (lines[1]) lines[1].style.opacity = '1';
-                if (lines[2]) lines[2].style.transform = 'translateY(0) rotate(0)';
+            // Ensure header is visible when menu is toggled
+            if (navList.classList.contains('active')) {
+                header.classList.remove('hidden');
             }
+        });
+    }
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileToggle && mobileToggle.classList.contains('active')) {
+                mobileToggle.classList.remove('active');
+                navList.classList.remove('active');
+            }
+        });
+    });
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initialize header state on page load
+    handleScroll();
+    
+    // Smooth scroll for navigation
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
             
             // Set active class
             navLinks.forEach(el => el.classList.remove('active'));
             link.classList.add('active');
             
-            // Smooth scroll to target
+            // Get target section and scroll to it
             const targetId = link.getAttribute('href');
             const target = document.querySelector(targetId);
+            
             if (target) {
                 const headerHeight = header.offsetHeight;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
@@ -102,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+});
 
     // Stats Counter Animation
     const stats = document.querySelectorAll('.stat-number');
