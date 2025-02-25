@@ -172,11 +172,11 @@ h3 {
 /* ==== HEADER SECTION ==== */
 .premium-header {
     position: fixed;
-    top: 0;
+    top: 10;
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 0.5rem 0; /* Reduced padding */
+    padding: 1.5rem 0; /* Reduced padding */
     transition: all 0.4s cubic-bezier(0.7, 0, 0.3, 1);
     background: transparent;
     transform: translateY(0);
@@ -197,7 +197,7 @@ h3 {
 .header-container {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 5 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -222,7 +222,7 @@ h3 {
 .header-logo {
     width: 180px; /* Controlled size */
     height: auto;
-    max-height: 50px; /* Ensure consistent height */
+    max-height: 100px; /* Ensure consistent height */
     object-fit: contain; /* Maintain aspect ratio */
     filter: drop-shadow(0 5px 10px rgba(255, 255, 255, 0.1));
     transition: var(--transition-medium);
@@ -230,7 +230,7 @@ h3 {
 
 .scrolled .header-logo {
     width: 150px;
-    max-height: 40px;
+    max-height: 75px;
 }
 
 /* Navigation */
@@ -430,13 +430,12 @@ h3 {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ==== HERO SECTION ==== */
 /* ==== HERO SECTION - COMPLETE STYLES ==== */
 
 /* Main Hero Container */
 .hero {
     position: relative;
-    padding-top: 80px; /* Space for fixed header */
+    padding-top: 100px; /* Space for fixed header */
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
