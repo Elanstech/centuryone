@@ -1,4 +1,4 @@
-// Century One Management - Essential JavaScript
+// Century One Management - Complete JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize AOS Animations
     AOS.init({
@@ -29,14 +29,48 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.querySelectorAll('[data-aos]').forEach(el => {
                         el.classList.add('aos-animate');
                     });
+                    
+                    // Ensure video plays after page is fully loaded
+                    playHeroVideo();
                 }, 500);
             }
             progress.style.width = `${loadProgress}%`;
         }, 200);
+    } else {
+        // If no preloader, still ensure video plays
+        playHeroVideo();
+    }
+    
+    // Handle Hero Video correctly for all devices
+    function playHeroVideo() {
+        const heroVideo = document.querySelector('.hero-video');
+        
+        if (heroVideo) {
+            // Set attributes that help with mobile autoplay
+            heroVideo.muted = true;
+            heroVideo.playsInline = true;
+            heroVideo.setAttribute('playsinline', '');
+            heroVideo.setAttribute('muted', '');
+            
+            // Force play the video
+            heroVideo.play().catch(error => {
+                console.log('Video play error:', error);
+                
+                // Try playing again with a user interaction
+                document.addEventListener('touchstart', () => {
+                    heroVideo.play().catch(e => console.log('Second play attempt failed:', e));
+                }, { once: true });
+            });
+            
+            // Ensure video restarts if it ends
+            heroVideo.addEventListener('ended', () => {
+                heroVideo.currentTime = 0;
+                heroVideo.play().catch(e => console.log('Loop play failed:', e));
+            });
+        }
     }
 
-   // Header Scroll Behavior
-document.addEventListener('DOMContentLoaded', () => {
+    // Header Scroll Behavior
     const header = document.querySelector('.premium-header');
     const mobileToggle = document.querySelector('.mobile-toggle');
     const navList = document.querySelector('.nav-list');
@@ -131,7 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
 
     // Stats Counter Animation
     const stats = document.querySelectorAll('.stat-number');
@@ -141,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
         stats.forEach(stat => {
             const target = parseInt(stat.dataset.count);
             const duration = 2000;
-            let start = 0;
             let startTime = null;
             
             const step = timestamp => {
@@ -180,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statsObserver.observe(stats[0].closest('.stats'));
     }
 
-    // Testimonials Carousel (if needed)
+    // Testimonials Carousel
     const slider = document.querySelector('.testimonials-slider');
     if (slider) {
         const testimonials = [
@@ -305,6 +337,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Newsletter Form
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const submitBtn = newsletterForm.querySelector('button');
+            const input = newsletterForm.querySelector('input[type="email"]');
+            
+            if (submitBtn && input) {
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+                    submitBtn.classList.add('success');
+                    
+                    setTimeout(() => {
+                        input.value = '';
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.classList.remove('success');
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }, 1500);
+            }
+        });
+    }
+
     // Back to Top Button
     const backToTop = document.getElementById('backToTop');
     if (backToTop) {
@@ -342,7 +404,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Hero Particles
+    // Service Cards Hover Effects
+    const serviceCards = document.querySelectorAll('.service-card');
+    if (serviceCards.length) {
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.service-icon');
+                if (icon) {
+                    icon.style.transform = 'rotateY(360deg)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.service-icon');
+                if (icon) {
+                    icon.style.transform = 'rotateY(0deg)';
+                }
+            });
+        });
+    }
+    
+    // Lazy loading images for better performance
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    if (lazyImages.length) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+    
+    // Hero Particles for visual interest
     const addParticles = () => {
         const container = document.querySelector('.hero');
         if (container) {
@@ -371,4 +472,25 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         requestAnimationFrame(addParticles);
     });
+    
+    // Handle property location filters if they exist
+    const locationFilters = document.querySelectorAll('.location-btn');
+    if (locationFilters.length) {
+        locationFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                // Remove active class from all filters
+                locationFilters.forEach(f => f.classList.remove('active'));
+                
+                // Add active class to clicked filter
+                filter.classList.add('active');
+                
+                // Filter properties (this would be implemented based on your map solution)
+                const filterValue = filter.dataset.filter;
+                console.log(`Filtering properties by: ${filterValue}`);
+                
+                // Example implementation if you have a map
+                // filterPropertyMap(filterValue);
+            });
+        });
+    }
 });
