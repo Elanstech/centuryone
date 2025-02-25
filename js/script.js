@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================
-    // MOBILE HEADER MENU - NEW IMPLEMENTATION
+    // MOBILE HEADER MENU - FIXED IMPLEMENTATION
     // ==========================================================
     const header = document.querySelector('.premium-header');
     const mobileToggle = document.querySelector('.mobile-toggle');
@@ -81,17 +81,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerButtons = document.querySelector('.header-buttons');
     const body = document.body;
     
-    // Create mobile header buttons container if it doesn't exist
+    // Fix tenant portal links - ensure they have the correct URL and open in new tab
+    const tenantPortalLinks = document.querySelectorAll('.tenant-portal');
+    tenantPortalLinks.forEach(link => {
+        // Update href to include https:// prefix for proper redirection
+        link.setAttribute('href', 'https://centuryone.app.doorloop.com');
+        // Ensure it opens in a new tab
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener');
+    });
+    
+    // Only create mobile header buttons if they don't exist yet
     if (mainNav && headerButtons && !document.querySelector('.mobile-header-buttons')) {
+        // Create a new container for mobile buttons
         const mobileHeaderButtons = document.createElement('div');
         mobileHeaderButtons.className = 'mobile-header-buttons';
-        mobileHeaderButtons.innerHTML = headerButtons.innerHTML;
+        
+        // Clone the buttons to avoid references to the original
+        const buttonsClone = headerButtons.cloneNode(true);
+        
+        // Fix links in the cloned buttons
+        const clonedLinks = buttonsClone.querySelectorAll('.tenant-portal');
+        clonedLinks.forEach(link => {
+            link.setAttribute('href', 'https://centuryone.app.doorloop.com');
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener');
+        });
+        
+        // Use the HTML content to avoid duplicate classes
+        mobileHeaderButtons.innerHTML = buttonsClone.innerHTML;
         mainNav.appendChild(mobileHeaderButtons);
     }
     
-    // Toggle mobile menu
+    // Toggle mobile menu - with fix to prevent event propagation issues
     if (mobileToggle && mainNav) {
-        mobileToggle.addEventListener('click', () => {
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent document click from immediately closing menu
             mobileToggle.classList.toggle('active');
             mainNav.classList.toggle('active');
             
@@ -115,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Close mobile menu when clicking outside
+    // Close mobile menu when clicking outside, with fix to prevent double-closing
     document.addEventListener('click', (e) => {
         // Check if menu is open and click is outside the menu and not on the toggle
         if (mainNav && mainNav.classList.contains('active') && 
@@ -127,18 +152,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Handle any mobile header buttons that were dynamically added
-    if (document.querySelector('.mobile-header-buttons')) {
-        document.querySelectorAll('.mobile-header-buttons a').forEach(button => {
-            button.addEventListener('click', () => {
+    // Fix event handlers for dynamically added mobile header buttons
+    document.addEventListener('click', (e) => {
+        // If clicked element is inside mobile header buttons
+        if (e.target.closest('.mobile-header-buttons')) {
+            // Only close menu if not clicking on a dropdown or submenu
+            const isDropdownToggle = e.target.classList.contains('dropdown-toggle');
+            if (!isDropdownToggle) {
                 if (mobileToggle && mobileToggle.classList.contains('active')) {
                     mobileToggle.classList.remove('active');
                     mainNav.classList.remove('active');
                     body.style.overflow = '';
                 }
-            });
-        });
-    }
+            }
+        }
+    });
     // ==========================================================
     // END MOBILE HEADER MENU
     // ==========================================================
@@ -202,24 +230,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smooth scroll for navigation
     navLinks.forEach(link => {
         link.addEventListener('click', e => {
-            e.preventDefault();
-            
-            // Set active class
-            navLinks.forEach(el => el.classList.remove('active'));
-            link.classList.add('active');
-            
-            // Get target section and scroll to it
-            const targetId = link.getAttribute('href');
-            const target = document.querySelector(targetId);
-            
-            if (target) {
-                const headerHeight = header.offsetHeight;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            // Don't prevent default for links to other pages
+            if (link.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                // Set active class
+                navLinks.forEach(el => el.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Get target section and scroll to it
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                
+                if (target) {
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
