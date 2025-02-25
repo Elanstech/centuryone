@@ -211,161 +211,72 @@ document.addEventListener('DOMContentLoaded', () => {
     if (stats.length) {
         statsObserver.observe(stats[0].closest('.stats'));
     }
-
-    // Testimonials Carousel
-    const slider = document.querySelector('.testimonials-slider');
-    if (slider) {
-        const testimonials = [
-            {
-                text: "Century One Management has exceeded all our expectations. Their dedication to maintaining our properties is truly impressive.",
-                author: "Jennifer Roberts",
-                position: "Property Owner",
-                image: "testimonial-1.jpg"
-            },
-            {
-                text: "Working with Zarina and her team has transformed our investment strategy. Their expertise is unmatched in the industry.",
-                author: "Michael Chen",
-                position: "Real Estate Investor",
-                image: "testimonial-2.jpg"
-            },
-            {
-                text: "The attention to detail and personalized service from Century One is exceptional. They treat our properties as if they were their own.",
-                author: "Sarah Johnson",
-                position: "Portfolio Manager",
-                image: "testimonial-3.jpg"
+    
+    // Testimonials functionality
+    const setupTestimonials = () => {
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        const dots = document.querySelectorAll('.testimonial-dots .dot');
+        const prevBtn = document.querySelector('.nav-btn.prev');
+        const nextBtn = document.querySelector('.nav-btn.next');
+        
+        if (!testimonialCards.length) return;
+        
+        let currentIndex = 0;
+        
+        // Function to change testimonial
+        const changeTestimonial = (index) => {
+            // Handle index boundaries
+            if (index < 0) {
+                index = testimonialCards.length - 1;
+            } else if (index >= testimonialCards.length) {
+                index = 0;
             }
-        ];
-        
-        // Create testimonial slides
-        testimonials.forEach((testimonial, index) => {
-            const slide = document.createElement('div');
-            slide.className = `testimonial-card ${index === 0 ? 'active' : ''}`;
             
-            slide.innerHTML = `
-                <div class="testimonial-quote">"</div>
-                <div class="testimonial-content">
-                    <p class="testimonial-text">${testimonial.text}</p>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="${testimonial.image}" alt="${testimonial.author}">
-                        </div>
-                        <div class="author-info">
-                            <h4>${testimonial.author}</h4>
-                            <p>${testimonial.position}</p>
-                        </div>
-                    </div>
-                </div>
-            `;
+            // Update current index
+            currentIndex = index;
             
-            slider.appendChild(slide);
-        });
-        
-        // Set up carousel functionality
-        const slides = slider.querySelectorAll('.testimonial-card');
-        let currentSlide = 0;
-        
-        // Position slides initially
-        slides.forEach((slide, index) => {
-            slide.style.transform = `translateX(${index * 100}%)`;
-        });
-        
-        // Function to change slides
-        const moveToSlide = (index) => {
-            slides.forEach((slide, i) => {
-                slide.style.transform = `translateX(${(i - index) * 100}%)`;
-                slide.classList.toggle('active', i === index);
+            // Update testimonial cards
+            testimonialCards.forEach((card, i) => {
+                card.classList.toggle('active', i === index);
             });
-            currentSlide = index;
+            
+            // Update dots
+            if (dots.length) {
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
         };
         
-        // Auto-advance slides
-        setInterval(() => {
-            const next = (currentSlide + 1) % slides.length;
-            moveToSlide(next);
-        }, 5000);
-    }
-
-    // Contact Form Handling
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        // Add focus effects to inputs
-        const inputs = contactForm.querySelectorAll('input, textarea, select');
-        inputs.forEach(input => {
-            // Check if input has value initially
-            if (input.value.trim() !== '') {
-                input.parentElement.classList.add('focused');
-            }
-            
-            input.addEventListener('focus', () => {
-                input.parentElement.classList.add('focused');
+        // Set up navigation buttons
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                changeTestimonial(currentIndex - 1);
             });
-
-            input.addEventListener('blur', () => {
-                if (!input.value.trim()) {
-                    input.parentElement.classList.remove('focused');
-                }
-            });
-        });
+        }
         
-        // Form submission
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const submitBtn = contactForm.querySelector('.btn-submit');
-            if (submitBtn) {
-                submitBtn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
-                submitBtn.disabled = true;
-                
-                // Simulate API call (replace with actual form submission)
-                setTimeout(() => {
-                    submitBtn.innerHTML = '<span><i class="fas fa-check"></i> Message Sent!</span>';
-                    submitBtn.classList.add('success');
-                    
-                    setTimeout(() => {
-                        contactForm.reset();
-                        submitBtn.innerHTML = '<span>Send Message <i class="fas fa-paper-plane"></i></span>';
-                        submitBtn.classList.remove('success');
-                        submitBtn.disabled = false;
-                        
-                        // Reset form state
-                        contactForm.querySelectorAll('.form-group').forEach(group => {
-                            group.classList.remove('focused', 'success');
-                        });
-                    }, 3000);
-                }, 2000);
-            }
-        });
-    }
-
-    // Newsletter Form
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const submitBtn = newsletterForm.querySelector('button');
-            const input = newsletterForm.querySelector('input[type="email"]');
-            
-            if (submitBtn && input) {
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-                submitBtn.disabled = true;
-                
-                // Simulate API call
-                setTimeout(() => {
-                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
-                    submitBtn.classList.add('success');
-                    
-                    setTimeout(() => {
-                        input.value = '';
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.classList.remove('success');
-                        submitBtn.disabled = false;
-                    }, 3000);
-                }, 1500);
-            }
-        });
-    }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                changeTestimonial(currentIndex + 1);
+            });
+        }
+        
+        // Set up dot navigation
+        if (dots.length) {
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    changeTestimonial(i);
+                });
+            });
+        }
+        
+        // Auto-advance testimonials
+        setInterval(() => {
+            changeTestimonial(currentIndex + 1);
+        }, 5000);
+    };
+    
+    setupTestimonials();
 
     // Back to Top Button
     const backToTop = document.getElementById('backToTop');
@@ -383,24 +294,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 top: 0,
                 behavior: 'smooth'
             });
-        });
-    }
-
-    // Floating Contact Button
-    const floatingContact = document.querySelector('.floating-contact');
-    if (floatingContact) {
-        floatingContact.addEventListener('click', () => {
-            // Smooth scroll to contact section
-            const contactSection = document.getElementById('contact');
-            if (contactSection) {
-                const headerHeight = document.querySelector('.premium-header')?.offsetHeight || 0;
-                const contactPosition = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                
-                window.scrollTo({
-                    top: contactPosition,
-                    behavior: 'smooth'
-                });
-            }
         });
     }
 
@@ -424,72 +317,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Lazy loading images for better performance
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    if (lazyImages.length) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        lazyImages.forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
+    // Property Filters (if they exist)
+    const propertyFilters = document.querySelectorAll('.filter-btn');
+    const propertyCards = document.querySelectorAll('.property-card');
     
-    // Hero Particles for visual interest
-    const addParticles = () => {
-        const container = document.querySelector('.hero');
-        if (container) {
-            // Remove any existing particles first
-            const existingParticles = container.querySelectorAll('.particle');
-            existingParticles.forEach(p => p.remove());
-            
-            // Add new particles
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.width = `${Math.random() * 5 + 1}px`;
-                particle.style.height = particle.style.width;
-                particle.style.opacity = Math.random() * 0.5 + 0.1;
-                particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                particle.style.animationDelay = `${Math.random() * 2}s`;
-                container.appendChild(particle);
-            }
-        }
-    };
-
-    // Add particles and handle window resize
-    addParticles();
-    window.addEventListener('resize', () => {
-        requestAnimationFrame(addParticles);
-    });
-    
-    // Handle property location filters if they exist
-    const locationFilters = document.querySelectorAll('.location-btn');
-    if (locationFilters.length) {
-        locationFilters.forEach(filter => {
-            filter.addEventListener('click', () => {
-                // Remove active class from all filters
-                locationFilters.forEach(f => f.classList.remove('active'));
+    if (propertyFilters.length && propertyCards.length) {
+        propertyFilters.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                propertyFilters.forEach(btn => btn.classList.remove('active'));
                 
-                // Add active class to clicked filter
-                filter.classList.add('active');
+                // Add active class to clicked button
+                button.classList.add('active');
                 
-                // Filter properties (this would be implemented based on your map solution)
-                const filterValue = filter.dataset.filter;
-                console.log(`Filtering properties by: ${filterValue}`);
+                // Get filter value
+                const filterValue = button.getAttribute('data-filter');
                 
-                // Example implementation if you have a map
-                // filterPropertyMap(filterValue);
+                // Filter properties
+                propertyCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const categories = card.getAttribute('data-category');
+                        if (categories && categories.includes(filterValue)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
             });
         });
     }
