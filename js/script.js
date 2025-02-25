@@ -1,4 +1,4 @@
-// Century One Management - Complete JavaScript
+// Century One Management - Complete JavaScript with fixed mobile header
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize AOS Animations
     AOS.init({
@@ -70,17 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ==========================================================
-    // MOBILE HEADER MENU - FIXED IMPLEMENTATION
-    // ==========================================================
-    const header = document.querySelector('.premium-header');
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const mainNav = document.querySelector('.main-nav');
-    const navList = document.querySelector('.nav-list');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const headerButtons = document.querySelector('.header-buttons');
-    const body = document.body;
-    
     // Fix tenant portal links - ensure they have the correct URL and open in new tab
     const tenantPortalLinks = document.querySelectorAll('.tenant-portal');
     tenantPortalLinks.forEach(link => {
@@ -90,30 +79,49 @@ document.addEventListener('DOMContentLoaded', () => {
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noopener');
     });
+
+    // Header and Mobile Menu Elements
+    const header = document.querySelector('.premium-header');
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const body = document.body;
     
-    // Only create mobile header buttons if they don't exist yet
-    if (mainNav && headerButtons && !document.querySelector('.mobile-header-buttons')) {
-        // Create a new container for mobile buttons
+    // REMOVE ANY EXISTING MOBILE HEADER BUTTONS TO AVOID DUPLICATES
+    const existingMobileButtons = document.querySelector('.mobile-header-buttons');
+    if (existingMobileButtons) {
+        existingMobileButtons.remove();
+    }
+    
+    // Create mobile header buttons properly
+    if (mainNav) {
+        // Create new container
         const mobileHeaderButtons = document.createElement('div');
         mobileHeaderButtons.className = 'mobile-header-buttons';
         
-        // Clone the buttons to avoid references to the original
-        const buttonsClone = headerButtons.cloneNode(true);
+        // Create tenant portal button
+        const tenantPortalBtn = document.createElement('a');
+        tenantPortalBtn.href = 'https://centuryone.app.doorloop.com';
+        tenantPortalBtn.target = '_blank';
+        tenantPortalBtn.rel = 'noopener';
+        tenantPortalBtn.className = 'portal-btn tenant-portal';
+        tenantPortalBtn.innerHTML = '<i class="fas fa-user"></i><span>Tenant Portal</span>';
         
-        // Fix links in the cloned buttons
-        const clonedLinks = buttonsClone.querySelectorAll('.tenant-portal');
-        clonedLinks.forEach(link => {
-            link.setAttribute('href', 'https://centuryone.app.doorloop.com');
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener');
-        });
+        // Create CTA button
+        const ctaBtn = document.createElement('a');
+        ctaBtn.href = '#contact';
+        ctaBtn.className = 'cta-btn';
+        ctaBtn.innerHTML = '<span>Get Started</span><i class="fas fa-arrow-right"></i>';
         
-        // Use the HTML content to avoid duplicate classes
-        mobileHeaderButtons.innerHTML = buttonsClone.innerHTML;
+        // Add buttons to container
+        mobileHeaderButtons.appendChild(tenantPortalBtn);
+        mobileHeaderButtons.appendChild(ctaBtn);
+        
+        // Add container to main nav
         mainNav.appendChild(mobileHeaderButtons);
     }
     
-    // Toggle mobile menu - with fix to prevent event propagation issues
+    // Toggle mobile menu
     if (mobileToggle && mainNav) {
         mobileToggle.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevent document click from immediately closing menu
@@ -140,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Close mobile menu when clicking outside, with fix to prevent double-closing
+    // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         // Check if menu is open and click is outside the menu and not on the toggle
         if (mainNav && mainNav.classList.contains('active') && 
@@ -152,24 +160,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Fix event handlers for dynamically added mobile header buttons
-    document.addEventListener('click', (e) => {
-        // If clicked element is inside mobile header buttons
-        if (e.target.closest('.mobile-header-buttons')) {
-            // Only close menu if not clicking on a dropdown or submenu
-            const isDropdownToggle = e.target.classList.contains('dropdown-toggle');
-            if (!isDropdownToggle) {
+    // Mobile buttons click handlers
+    const mobileButtons = document.querySelectorAll('.mobile-header-buttons a');
+    mobileButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Only close the menu for non-dropdown buttons
+            if (!button.classList.contains('dropdown-toggle')) {
                 if (mobileToggle && mobileToggle.classList.contains('active')) {
                     mobileToggle.classList.remove('active');
                     mainNav.classList.remove('active');
                     body.style.overflow = '';
                 }
             }
-        }
+        });
     });
-    // ==========================================================
-    // END MOBILE HEADER MENU
-    // ==========================================================
 
     // Variables for scroll handling
     let lastScroll = 0;
@@ -207,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScroll = currentScroll;
     };
     
-    // Also ensure mobile menu state is correct on resize
+    // Reset mobile menu on window resize
     window.addEventListener('resize', () => {
         if (window.innerWidth > 992) {
             if (mainNav && mainNav.classList.contains('active')) {
@@ -217,7 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // Reset scroll handling on resize
         handleScroll();
     });
     
