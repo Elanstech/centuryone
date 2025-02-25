@@ -169,14 +169,14 @@ h3 {
     }
 }
 
-/* Header - Complete Styling with Improved Scroll Behavior */
+/* Header - Complete Styling with Higher Position */
 .premium-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 0.8rem 0; /* Reduced padding to move header up */
     transition: all 0.4s cubic-bezier(0.7, 0, 0.3, 1);
     background: transparent;
     transform: translateY(0);
@@ -186,7 +186,7 @@ h3 {
     background: rgba(3, 70, 5, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px -10px rgba(4, 99, 7, 0.1);
-    padding: 0.6rem 0;
+    padding: 0.5rem 0;
 }
 
 .premium-header.hidden {
@@ -215,14 +215,14 @@ h3 {
 }
 
 .header-logo {
-    width: 220px; /* Reduced size */
+    width: 200px; /* Further reduced size */
     height: auto;
     filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.1));
     transition: var(--transition-medium);
 }
 
 .scrolled .header-logo {
-    width: 180px; /* Even smaller when scrolled */
+    width: 160px; /* Even smaller when scrolled */
 }
 
 /* Navigation */
@@ -245,7 +245,7 @@ h3 {
 .nav-link {
     color: var(--white);
     text-decoration: none;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 500;
     padding: 4px 0;
     position: relative;
@@ -308,7 +308,7 @@ h3 {
 .portal-btn {
     padding: 8px 20px;
     border-radius: 50px;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.4s cubic-bezier(0.7, 0, 0.3, 1);
@@ -332,11 +332,11 @@ h3 {
 
 /* CTA Button */
 .cta-btn {
-    padding: 10px 26px;
+    padding: 8px 22px;
     position: relative;
     color: var(--white);
     border-radius: 50px;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 600;
     text-decoration: none;
     display: flex;
@@ -392,7 +392,7 @@ h3 {
 .mobile-toggle {
     display: none;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     background: none;
     border: none;
     cursor: pointer;
@@ -401,7 +401,7 @@ h3 {
 }
 
 .toggle-line {
-    width: 32px;
+    width: 28px;
     height: 2px;
     background: var(--white);
     transition: all 0.4s cubic-bezier(0.7, 0, 0.3, 1);
@@ -411,7 +411,7 @@ h3 {
 
 /* Mobile Menu Styles */
 .mobile-toggle.active .toggle-line:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .mobile-toggle.active .toggle-line:nth-child(2) {
@@ -419,7 +419,7 @@ h3 {
 }
 
 .mobile-toggle.active .toggle-line:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Responsive Design */
@@ -429,11 +429,11 @@ h3 {
     }
 
     .header-logo {
-        width: 200px;
+        width: 180px;
     }
     
     .scrolled .header-logo {
-        width: 160px;
+        width: 150px;
     }
 
     .nav-list {
@@ -441,30 +441,30 @@ h3 {
     }
 
     .nav-link {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: 1200px) {
     .header-logo {
-        width: 180px;
+        width: 160px;
     }
     
     .scrolled .header-logo {
-        width: 140px;
+        width: 130px;
     }
 
     .nav-list {
-        gap: 25px;
+        gap: 20px;
     }
 
     .portal-btn {
-        padding: 8px 16px;
+        padding: 6px 15px;
         font-size: 1.4rem;
     }
     
     .cta-btn {
-        padding: 8px 20px;
+        padding: 6px 18px;
         font-size: 1.4rem;
     }
 }
@@ -506,7 +506,7 @@ h3 {
     }
 
     .header-logo {
-        width: 160px;
+        width: 140px;
     }
     
     .scrolled .header-logo {
@@ -514,7 +514,7 @@ h3 {
     }
 }
 
-/* Hero Section - Redesigned with Metallic Gold */
+/* Hero Section - Redesigned with Centered Content */
 .hero {
     position: relative;
     height: 100vh;
@@ -523,7 +523,10 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     color: var(--white);
+    padding: 0 2rem;
+    text-align: center;
 }
 
 /* Video Background */
@@ -550,29 +553,12 @@ h3 {
     z-index: -1;
 }
 
-/* Container for content */
-.hero-container {
-    max-width: 1400px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 4rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 6rem;
-    z-index: 1;
-}
-
-/* Larger screens: side by side layout */
-@media (min-width: 992px) {
-    .hero-container {
-        grid-template-columns: 1.2fr 0.8fr;
-        align-items: center;
-    }
-}
-
-/* Hero Content Styling */
+/* Centered Hero Content */
 .hero-content {
-    padding-top: 6rem;
+    max-width: 900px;
+    width: 100%;
+    z-index: 1;
+    padding-top: 0; /* Removed extra padding */
 }
 
 /* Gold badge with metallic effect */
@@ -604,7 +590,7 @@ h3 {
 }
 
 .hero h1 {
-    font-size: clamp(3.6rem, 5vw, 5.5rem);
+    font-size: clamp(3.8rem, 5vw, 6rem);
     line-height: 1.1;
     margin-bottom: 2.5rem;
     font-weight: 700;
@@ -621,16 +607,19 @@ h3 {
 }
 
 .hero-description {
-    font-size: clamp(1.6rem, 2vw, 2rem);
+    font-size: clamp(1.8rem, 2vw, 2.2rem);
     line-height: 1.6;
     margin-bottom: 3.5rem;
-    max-width: 650px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     opacity: 0.9;
 }
 
-/* CTA Buttons */
+/* CTA Buttons - Centered */
 .hero-cta {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
     margin-bottom: 4rem;
@@ -642,7 +631,7 @@ h3 {
     gap: 1rem;
     background: rgba(0, 0, 0, 0.5);
     color: var(--white);
-    padding: 1.4rem 3rem;
+    padding: 1.4rem 3.5rem;
     border-radius: 50px;
     font-size: 1.6rem;
     font-weight: 600;
@@ -709,7 +698,7 @@ h3 {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     color: var(--white);
-    padding: 1.3rem 3rem;
+    padding: 1.3rem 3.5rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     font-size: 1.6rem;
@@ -730,105 +719,6 @@ h3 {
 
 .btn-secondary:hover i {
     transform: translateX(5px);
-}
-
-/* Feature Cards with metallic gold accents */
-/* Modern Feature Cards - Completely Redesigned */
-.hero-features {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    align-content: center;
-}
-
-@media (min-width: 576px) {
-    .hero-features {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 992px) {
-    .hero-features {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Clean, Modern Feature Card Design */
-.feature-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 2.5rem;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-}
-
-.feature-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Modern Icon Style */
-.feature-icon {
-    width: 50px;
-    height: 50px;
-    background: var(--gold-gradient);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.8rem;
-    position: relative;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.feature-icon i {
-    font-size: 2rem;
-    color: var(--white);
-}
-
-/* Feature Content */
-.feature-card h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--white);
-    font-weight: 600;
-}
-
-.feature-card p {
-    font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0;
-    line-height: 1.6;
-}
-
-/* Modern Hover Effect */
-.feature-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--gold-gradient);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-}
-
-.feature-card:hover::after {
-    transform: scaleX(1);
-}
-
-/* Subtle animation for icon */
-.feature-card:hover .feature-icon {
-    transform: scale(1.1);
 }
 
 /* Scroll Indicator */
@@ -867,22 +757,7 @@ h3 {
     animation: float-particle 3s infinite ease-in-out;
 }
 
-/* Metallic gold animations */
-@keyframes gold-shimmer {
-    0% {
-        opacity: 0.7;
-        background-position: 0% 50%;
-    }
-    50% {
-        opacity: 1;
-        background-position: 100% 50%;
-    }
-    100% {
-        opacity: 0.7;
-        background-position: 0% 50%;
-    }
-}
-
+/* Animations */
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
@@ -906,17 +781,18 @@ h3 {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .hero-container {
-        padding: 0 2rem;
+    .hero-content {
+        padding: 0 1rem;
     }
     
     .hero-cta {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
     
     .btn-primary, .btn-secondary {
         width: 100%;
+        max-width: 300px;
         justify-content: center;
     }
 }
