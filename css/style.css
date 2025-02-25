@@ -169,14 +169,14 @@ h3 {
     }
 }
 
-/* Header - Complete Styling with Higher Position */
+/* ==== HEADER SECTION ==== */
 .premium-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 0.8rem 0; /* Reduced padding to move header up */
+    padding: 0.5rem 0; /* Reduced padding */
     transition: all 0.4s cubic-bezier(0.7, 0, 0.3, 1);
     background: transparent;
     transform: translateY(0);
@@ -186,7 +186,7 @@ h3 {
     background: rgba(3, 70, 5, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px -10px rgba(4, 99, 7, 0.1);
-    padding: 0.5rem 0;
+    padding: 0.3rem 0;
 }
 
 .premium-header.hidden {
@@ -207,22 +207,30 @@ h3 {
 /* Logo */
 .logo-wrapper {
     position: relative;
+    line-height: 0; /* Remove extra space */
+    max-height: 60px; /* Control max height */
+    display: flex;
+    align-items: center;
 }
 
 .logo-link {
     display: inline-block;
     text-decoration: none;
+    line-height: 0; /* Remove extra space */
 }
 
 .header-logo {
-    width: 200px; /* Further reduced size */
+    width: 180px; /* Controlled size */
     height: auto;
-    filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.1));
+    max-height: 50px; /* Ensure consistent height */
+    object-fit: contain; /* Maintain aspect ratio */
+    filter: drop-shadow(0 5px 10px rgba(255, 255, 255, 0.1));
     transition: var(--transition-medium);
 }
 
 .scrolled .header-logo {
-    width: 160px; /* Even smaller when scrolled */
+    width: 150px;
+    max-height: 40px;
 }
 
 /* Navigation */
@@ -422,99 +430,7 @@ h3 {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Responsive Design */
-@media (max-width: 1400px) {
-    .header-container {
-        padding: 0 40px;
-    }
-
-    .header-logo {
-        width: 180px;
-    }
-    
-    .scrolled .header-logo {
-        width: 150px;
-    }
-
-    .nav-list {
-        gap: 30px;
-    }
-
-    .nav-link {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 1200px) {
-    .header-logo {
-        width: 160px;
-    }
-    
-    .scrolled .header-logo {
-        width: 130px;
-    }
-
-    .nav-list {
-        gap: 20px;
-    }
-
-    .portal-btn {
-        padding: 6px 15px;
-        font-size: 1.4rem;
-    }
-    
-    .cta-btn {
-        padding: 6px 18px;
-        font-size: 1.4rem;
-    }
-}
-
-@media (max-width: 992px) {
-    .nav-list {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 300px;
-        height: 100vh;
-        background: rgba(4, 99, 7, 0.95);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        justify-content: center;
-        gap: 30px;
-        padding: 40px;
-        transition: right 0.6s cubic-bezier(0.7, 0, 0.3, 1);
-        z-index: 1000;
-        overflow-y: auto;
-    }
-
-    .nav-list.active {
-        right: 0;
-    }
-
-    .header-buttons {
-        display: none;
-    }
-
-    .mobile-toggle {
-        display: flex;
-    }
-}
-
-@media (max-width: 576px) {
-    .header-container {
-        padding: 0 20px;
-    }
-
-    .header-logo {
-        width: 140px;
-    }
-    
-    .scrolled .header-logo {
-        width: 120px;
-    }
-}
-
-/* Hero Section - Redesigned with Centered Content */
+/* ==== HERO SECTION ==== */
 .hero {
     position: relative;
     height: 100vh;
@@ -555,10 +471,13 @@ h3 {
 
 /* Centered Hero Content */
 .hero-content {
-    max-width: 900px;
+    max-width: 1200px;
     width: 100%;
     z-index: 1;
-    padding-top: 0; /* Removed extra padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
 }
 
 /* Gold badge with metallic effect */
@@ -590,10 +509,11 @@ h3 {
 }
 
 .hero h1 {
-    font-size: clamp(3.8rem, 5vw, 6rem);
+    font-size: clamp(3.6rem, 5vw, 5.5rem);
     line-height: 1.1;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     font-weight: 700;
+    max-width: 900px;
 }
 
 .text-accent {
@@ -607,12 +527,10 @@ h3 {
 }
 
 .hero-description {
-    font-size: clamp(1.8rem, 2vw, 2.2rem);
+    font-size: clamp(1.6rem, 2vw, 2rem);
     line-height: 1.6;
-    margin-bottom: 3.5rem;
+    margin-bottom: 3rem;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
     opacity: 0.9;
 }
 
@@ -721,10 +639,64 @@ h3 {
     transform: translateX(5px);
 }
 
+/* New Feature Cards */
+.hero-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 4rem;
+}
+
+.hero-features .feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    padding: 2.5rem 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-features .feature-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent);
+}
+
+.hero-features .feature-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-accent-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 2.4rem;
+    color: var(--white);
+}
+
+.hero-features .feature-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.hero-features .feature-card p {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+
 /* Scroll Indicator */
 .hero-scroll {
     position: absolute;
-    bottom: 4rem;
+    bottom: 3rem;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -779,8 +751,108 @@ h3 {
     }
 }
 
-/* Responsive adjustments */
+/* Responsive design for header and hero */
+@media (max-width: 1400px) {
+    .header-container {
+        padding: 0 40px;
+    }
+
+    .header-logo {
+        width: 160px;
+    }
+    
+    .scrolled .header-logo {
+        width: 140px;
+    }
+
+    .nav-list {
+        gap: 30px;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .header-logo {
+        width: 150px;
+    }
+    
+    .scrolled .header-logo {
+        width: 130px;
+    }
+
+    .nav-list {
+        gap: 20px;
+    }
+
+    .portal-btn {
+        padding: 6px 15px;
+        font-size: 1.4rem;
+    }
+    
+    .cta-btn {
+        padding: 6px 18px;
+        font-size: 1.4rem;
+    }
+    
+    .hero-features {
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 992px) {
+    .nav-list {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: rgba(4, 99, 7, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        padding: 40px;
+        transition: right 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .nav-list.active {
+        right: 0;
+    }
+
+    .header-buttons {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: flex;
+    }
+    
+    .hero-features {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+    }
+}
+
 @media (max-width: 768px) {
+    .header-container {
+        padding: 0 20px;
+    }
+
+    .header-logo {
+        width: 140px;
+        max-height: 35px;
+    }
+    
+    .scrolled .header-logo {
+        width: 120px;
+        max-height: 30px;
+    }
+    
     .hero-content {
         padding: 0 1rem;
     }
@@ -794,6 +866,53 @@ h3 {
         width: 100%;
         max-width: 300px;
         justify-content: center;
+    }
+    
+    .hero-features {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        gap: 1.5rem;
+    }
+    
+    .hero-features .feature-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-container {
+        padding: 0 15px;
+    }
+
+    .header-logo {
+        width: 120px;
+        max-height: 30px;
+    }
+    
+    .scrolled .header-logo {
+        width: 100px;
+        max-height: 25px;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-description {
+        font-size: 1.5rem;
+    }
+    
+    .hero-badge {
+        padding: 0.6rem 1.2rem;
+    }
+    
+    .hero-badge span {
+        font-size: 1rem;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.4rem;
     }
 }
 
