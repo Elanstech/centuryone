@@ -70,11 +70,79 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Header Scroll Behavior
+    // ==========================================================
+    // MOBILE HEADER MENU - NEW IMPLEMENTATION
+    // ==========================================================
     const header = document.querySelector('.premium-header');
     const mobileToggle = document.querySelector('.mobile-toggle');
+    const mainNav = document.querySelector('.main-nav');
     const navList = document.querySelector('.nav-list');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const headerButtons = document.querySelector('.header-buttons');
+    const body = document.body;
     
+    // Create mobile header buttons container if it doesn't exist
+    if (mainNav && headerButtons && !document.querySelector('.mobile-header-buttons')) {
+        const mobileHeaderButtons = document.createElement('div');
+        mobileHeaderButtons.className = 'mobile-header-buttons';
+        mobileHeaderButtons.innerHTML = headerButtons.innerHTML;
+        mainNav.appendChild(mobileHeaderButtons);
+    }
+    
+    // Toggle mobile menu
+    if (mobileToggle && mainNav) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            
+            // Prevent body scrolling when menu is open
+            if (mainNav.classList.contains('active')) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = '';
+            }
+        });
+    }
+    
+    // Close mobile menu when clicking on links
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileToggle && mobileToggle.classList.contains('active')) {
+                mobileToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        // Check if menu is open and click is outside the menu and not on the toggle
+        if (mainNav && mainNav.classList.contains('active') && 
+            !mainNav.contains(e.target) && 
+            mobileToggle && !mobileToggle.contains(e.target)) {
+            mobileToggle.classList.remove('active');
+            mainNav.classList.remove('active');
+            body.style.overflow = '';
+        }
+    });
+    
+    // Handle any mobile header buttons that were dynamically added
+    if (document.querySelector('.mobile-header-buttons')) {
+        document.querySelectorAll('.mobile-header-buttons a').forEach(button => {
+            button.addEventListener('click', () => {
+                if (mobileToggle && mobileToggle.classList.contains('active')) {
+                    mobileToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            });
+        });
+    }
+    // ==========================================================
+    // END MOBILE HEADER MENU
+    // ==========================================================
+
     // Variables for scroll handling
     let lastScroll = 0;
     let scrollTimer;
@@ -98,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Scrolling DOWN - hide header after a short delay
             clearTimeout(scrollTimer);
             scrollTimer = setTimeout(() => {
-                if (!navList.classList.contains('active')) { // Don't hide if mobile menu is open
+                if (mainNav && !mainNav.classList.contains('active')) { // Don't hide if mobile menu is open
                     header.classList.add('hidden');
                 }
             }, 150); // Short delay before hiding to avoid flickering
@@ -111,28 +179,18 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScroll = currentScroll;
     };
     
-    // Mobile menu toggle
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => {
-            mobileToggle.classList.toggle('active');
-            navList.classList.toggle('active');
-            
-            // Ensure header is visible when menu is toggled
-            if (navList.classList.contains('active')) {
-                header.classList.remove('hidden');
-            }
-        });
-    }
-    
-    // Close mobile menu when clicking on a link
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (mobileToggle && mobileToggle.classList.contains('active')) {
+    // Also ensure mobile menu state is correct on resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 992) {
+            if (mainNav && mainNav.classList.contains('active')) {
                 mobileToggle.classList.remove('active');
-                navList.classList.remove('active');
+                mainNav.classList.remove('active');
+                body.style.overflow = '';
             }
-        });
+        }
+        
+        // Reset scroll handling on resize
+        handleScroll();
     });
     
     // Add scroll event listener
