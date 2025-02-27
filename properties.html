@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/properties.css">
+    <link rel="stylesheet" href="./css/property-details.css">
 </head>
 <body>
    
@@ -109,6 +110,18 @@
         </div>
     </section>
 
+    <!-- Property Details Modal Overlay -->
+    <div id="propertyDetailsOverlay" class="property-details-overlay">
+        <div class="property-details-container">
+            <button class="close-details">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="property-details-content">
+                <!-- Content will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+
     <!-- Properties Filter Section -->
     <section class="properties-filter-section">
         <div class="container">
@@ -145,14 +158,14 @@
         <div class="container">
             <div class="properties-grid">
                 <!-- Property 1 -->
-                <div class="property-card" data-aos="fade-up" data-category="residential luxury">
+                <div class="property-card" data-aos="fade-up" data-category="residential luxury" data-id="10226-183rd-pl">
                     <div class="property-badge">Luxury</div>
                     <div class="property-image">
                         <img src="10226183rd Pl.jpeg" alt="10226 183rd Pl - Hollis, NY">
                         <div class="image-overlay">
-                            <a href="property-details.html" class="overlay-btn">
+                            <button class="overlay-btn view-details-btn">
                                 <i class="fas fa-arrow-right"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="property-content">
@@ -169,20 +182,92 @@
                             Elegant multi-family property in a prime location with modern amenities and excellent rental potential.
                         </p>
                         <div class="property-action">
-                            <a href="property-details.html" class="btn-view">View Details</a>
+                            <button class="btn-view view-details-btn">View Details</button>
+                        </div>
+                    </div>
+                    <!-- Hidden detailed content for modal -->
+                    <div class="hidden-property-details">
+                        <div class="detail-gallery">
+                            <img src="10226183rd Pl.jpeg" alt="10226 183rd Pl - Main View" class="main-detail-image">
+                            <div class="detail-thumbnails">
+                                <img src="10226183rd Pl.jpeg" alt="10226 183rd Pl - Exterior" class="thumbnail active">
+                                <img src="property-interior-1.jpg" alt="10226 183rd Pl - Living Room" class="thumbnail">
+                                <img src="property-interior-2.jpg" alt="10226 183rd Pl - Kitchen" class="thumbnail">
+                                <img src="property-interior-3.jpg" alt="10226 183rd Pl - Bedroom" class="thumbnail">
+                            </div>
+                        </div>
+                        <div class="detail-content">
+                            <h2>10226 183rd Pl</h2>
+                            <p class="detail-location"><i class="fas fa-map-marker-alt"></i> Hollis, NY 11423</p>
+                            <div class="detail-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-home"></i>
+                                    <span>Property Type</span>
+                                    <strong>Multi-Family</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-building"></i>
+                                    <span>Units</span>
+                                    <strong>2</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>Square Footage</span>
+                                    <strong>2,500 sq ft</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-bed"></i>
+                                    <span>Bedrooms</span>
+                                    <strong>5 Total</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-bath"></i>
+                                    <span>Bathrooms</span>
+                                    <strong>3 Total</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-car"></i>
+                                    <span>Parking</span>
+                                    <strong>2 Spaces</strong>
+                                </div>
+                            </div>
+                            <div class="detail-description">
+                                <h3>Property Description</h3>
+                                <p>Excellent investment opportunity in the heart of Hollis. This well-maintained multi-family property features two spacious units with separate utilities and entrances. The property has been recently renovated with modern finishes including updated kitchens and bathrooms, new flooring throughout, and energy-efficient appliances.</p>
+                                <p>The first unit offers 3 bedrooms and 2 bathrooms, while the second unit features 2 bedrooms and 1 bathroom. Both units have ample living space with natural light. The property includes a shared backyard and off-street parking for 2 vehicles.</p>
+                                <p>Located in a desirable neighborhood with easy access to public transportation, shopping, and dining. Strong rental history with consistent cash flow makes this an ideal addition to your investment portfolio.</p>
+                            </div>
+                            <div class="detail-features">
+                                <h3>Property Features</h3>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Recently renovated</li>
+                                    <li><i class="fas fa-check"></i> Separate utilities</li>
+                                    <li><i class="fas fa-check"></i> Modern kitchens</li>
+                                    <li><i class="fas fa-check"></i> Updated bathrooms</li>
+                                    <li><i class="fas fa-check"></i> Hardwood floors</li>
+                                    <li><i class="fas fa-check"></i> Central heating and cooling</li>
+                                    <li><i class="fas fa-check"></i> Private entrances</li>
+                                    <li><i class="fas fa-check"></i> Shared backyard</li>
+                                    <li><i class="fas fa-check"></i> Off-street parking</li>
+                                    <li><i class="fas fa-check"></i> Close to public transportation</li>
+                                </ul>
+                            </div>
+                            <div class="detail-cta">
+                                <a href="index.html#contact" class="btn-primary">Contact Us About This Property</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Property 2 -->
-                <div class="property-card" data-aos="fade-up" data-aos-delay="100" data-category="residential">
+                <div class="property-card" data-aos="fade-up" data-aos-delay="100" data-category="residential" data-id="14220-84th-dr">
                     <div class="property-badge">Residential</div>
                     <div class="property-image">
                         <img src="1422084thDr.jpeg" alt="14220 84th Dr - Jamaica, NY">
                         <div class="image-overlay">
-                            <a href="property-details.html" class="overlay-btn">
+                            <button class="overlay-btn view-details-btn">
                                 <i class="fas fa-arrow-right"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="property-content">
@@ -199,20 +284,92 @@
                             Charming residential property in Jamaica offering comfortable living spaces in a convenient neighborhood.
                         </p>
                         <div class="property-action">
-                            <a href="property-details.html" class="btn-view">View Details</a>
+                            <button class="btn-view view-details-btn">View Details</button>
+                        </div>
+                    </div>
+                    <!-- Hidden detailed content for modal -->
+                    <div class="hidden-property-details">
+                        <div class="detail-gallery">
+                            <img src="1422084thDr.jpeg" alt="14220 84th Dr - Main View" class="main-detail-image">
+                            <div class="detail-thumbnails">
+                                <img src="1422084thDr.jpeg" alt="14220 84th Dr - Exterior" class="thumbnail active">
+                                <img src="property-interior-1.jpg" alt="14220 84th Dr - Living Room" class="thumbnail">
+                                <img src="property-interior-2.jpg" alt="14220 84th Dr - Kitchen" class="thumbnail">
+                                <img src="property-interior-3.jpg" alt="14220 84th Dr - Bedroom" class="thumbnail">
+                            </div>
+                        </div>
+                        <div class="detail-content">
+                            <h2>14220 84th Dr</h2>
+                            <p class="detail-location"><i class="fas fa-map-marker-alt"></i> Jamaica, NY 11435</p>
+                            <div class="detail-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-home"></i>
+                                    <span>Property Type</span>
+                                    <strong>Multi-Family</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-building"></i>
+                                    <span>Units</span>
+                                    <strong>1</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>Square Footage</span>
+                                    <strong>1,800 sq ft</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-bed"></i>
+                                    <span>Bedrooms</span>
+                                    <strong>3</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-bath"></i>
+                                    <span>Bathrooms</span>
+                                    <strong>2</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-car"></i>
+                                    <span>Parking</span>
+                                    <strong>1 Space</strong>
+                                </div>
+                            </div>
+                            <div class="detail-description">
+                                <h3>Property Description</h3>
+                                <p>Charming residential property located in the heart of Jamaica, Queens. This beautifully maintained home offers 3 bedrooms and 2 full bathrooms across 1,800 square feet of living space.</p>
+                                <p>The property features an open concept living and dining area, updated kitchen with stainless steel appliances, and hardwood flooring throughout. Large windows provide abundant natural light in all rooms. The primary bedroom includes an en-suite bathroom and ample closet space.</p>
+                                <p>This property is situated in a convenient neighborhood with easy access to public transportation, shopping centers, and dining options. The location offers excellent rental potential in a high-demand area.</p>
+                            </div>
+                            <div class="detail-features">
+                                <h3>Property Features</h3>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Well-maintained property</li>
+                                    <li><i class="fas fa-check"></i> Updated kitchen</li>
+                                    <li><i class="fas fa-check"></i> Stainless steel appliances</li>
+                                    <li><i class="fas fa-check"></i> Hardwood flooring</li>
+                                    <li><i class="fas fa-check"></i> Large windows</li>
+                                    <li><i class="fas fa-check"></i> En-suite bathroom</li>
+                                    <li><i class="fas fa-check"></i> Ample storage space</li>
+                                    <li><i class="fas fa-check"></i> Off-street parking</li>
+                                    <li><i class="fas fa-check"></i> Convenient location</li>
+                                    <li><i class="fas fa-check"></i> Close to amenities</li>
+                                </ul>
+                            </div>
+                            <div class="detail-cta">
+                                <a href="index.html#contact" class="btn-primary">Contact Us About This Property</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Property 3 -->
-                <div class="property-card" data-aos="fade-up" data-aos-delay="200" data-category="residential">
+                <div class="property-card" data-aos="fade-up" data-aos-delay="200" data-category="residential" data-id="61-55-98-st">
                     <div class="property-badge">Residential</div>
                     <div class="property-image">
                         <img src="615598St.jpeg" alt="61-55 98 Street - Rego Park, NY">
                         <div class="image-overlay">
-                            <a href="property-details.html" class="overlay-btn">
+                            <button class="overlay-btn view-details-btn">
                                 <i class="fas fa-arrow-right"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="property-content">
@@ -229,20 +386,92 @@
                             Well-maintained property in the heart of Rego Park, featuring modern amenities and excellent access to transportation.
                         </p>
                         <div class="property-action">
-                            <a href="property-details.html" class="btn-view">View Details</a>
+                            <button class="btn-view view-details-btn">View Details</button>
+                        </div>
+                    </div>
+                    <!-- Hidden detailed content for modal -->
+                    <div class="hidden-property-details">
+                        <div class="detail-gallery">
+                            <img src="615598St.jpeg" alt="61-55 98 St - Main View" class="main-detail-image">
+                            <div class="detail-thumbnails">
+                                <img src="615598St.jpeg" alt="61-55 98 St - Exterior" class="thumbnail active">
+                                <img src="property-interior-1.jpg" alt="61-55 98 St - Living Room" class="thumbnail">
+                                <img src="property-interior-2.jpg" alt="61-55 98 St - Kitchen" class="thumbnail">
+                                <img src="property-interior-3.jpg" alt="61-55 98 St - Bedroom" class="thumbnail">
+                            </div>
+                        </div>
+                        <div class="detail-content">
+                            <h2>61-55 98 St</h2>
+                            <p class="detail-location"><i class="fas fa-map-marker-alt"></i> Rego Park, NY 11374</p>
+                            <div class="detail-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-home"></i>
+                                    <span>Property Type</span>
+                                    <strong>Multi-Family</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-building"></i>
+                                    <span>Units</span>
+                                    <strong>1</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>Square Footage</span>
+                                    <strong>1,950 sq ft</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-bed"></i>
+                                    <span>Bedrooms</span>
+                                    <strong>4</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-bath"></i>
+                                    <span>Bathrooms</span>
+                                    <strong>2.5</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-car"></i>
+                                    <span>Parking</span>
+                                    <strong>1 Garage</strong>
+                                </div>
+                            </div>
+                            <div class="detail-description">
+                                <h3>Property Description</h3>
+                                <p>Premium residential property located in the desirable Rego Park neighborhood. This well-maintained home offers 4 bedrooms and 2.5 bathrooms across nearly 2,000 square feet of meticulously designed living space.</p>
+                                <p>The property features high ceilings, an open floor plan, and abundant natural light. The gourmet kitchen includes granite countertops, custom cabinetry, and high-end stainless steel appliances. The spacious master suite features a walk-in closet and en-suite bathroom with dual vanities.</p>
+                                <p>Ideally situated with excellent access to shopping, dining, and transportation options. Only minutes from the M and R subway lines, providing easy access to Manhattan. The location offers strong rental demand and excellent appreciation potential.</p>
+                            </div>
+                            <div class="detail-features">
+                                <h3>Property Features</h3>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> High ceilings</li>
+                                    <li><i class="fas fa-check"></i> Open floor plan</li>
+                                    <li><i class="fas fa-check"></i> Gourmet kitchen</li>
+                                    <li><i class="fas fa-check"></i> Granite countertops</li>
+                                    <li><i class="fas fa-check"></i> Stainless steel appliances</li>
+                                    <li><i class="fas fa-check"></i> Walk-in closet</li>
+                                    <li><i class="fas fa-check"></i> En-suite bathroom</li>
+                                    <li><i class="fas fa-check"></i> Attached garage</li>
+                                    <li><i class="fas fa-check"></i> Prime location</li>
+                                    <li><i class="fas fa-check"></i> Near public transit</li>
+                                </ul>
+                            </div>
+                            <div class="detail-cta">
+                                <a href="index.html#contact" class="btn-primary">Contact Us About This Property</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Property 4 -->
-                <div class="property-card" data-aos="fade-up" data-aos-delay="300" data-category="commercial">
+                <div class="property-card" data-aos="fade-up" data-aos-delay="300" data-category="commercial" data-id="101-greenwich-street">
                     <div class="property-badge">Commercial</div>
                     <div class="property-image">
-                        <img src="2rector.jpg" alt="Commercial Office Building">
+                        <img src="2rector.jpg" alt="101 Greenwich Street - Manhattan, NY">
                         <div class="image-overlay">
-                            <a href="property-details.html" class="overlay-btn">
+                            <button class="overlay-btn view-details-btn">
                                 <i class="fas fa-arrow-right"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="property-content">
@@ -259,142 +488,98 @@
                             Premium commercial space in downtown Manhattan with state-of-the-art facilities and prestigious address.
                         </p>
                         <div class="property-action">
-                            <a href="property-details.html" class="btn-view">View Details</a>
+                            <button class="btn-view view-details-btn">View Details</button>
                         </div>
                     </div>
-                </div>
-
-                <!-- Property 5 -->
-                <div class="property-card" data-aos="fade-up" data-category="residential">
-                    <div class="property-badge">Residential</div>
-                    <div class="property-image">
-                        <img src="residential-1.jpg" alt="Residential Property in Queens">
-                        <div class="image-overlay">
-                            <a href="property-details.html" class="overlay-btn">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+                    <!-- Hidden detailed content for modal -->
+                    <div class="hidden-property-details">
+                        <div class="detail-gallery">
+                            <img src="2rector.jpg" alt="101 Greenwich Street - Main View" class="main-detail-image">
+                            <div class="detail-thumbnails">
+                                <img src="2rector.jpg" alt="101 Greenwich Street - Exterior" class="thumbnail active">
+                                <img src="commercial-interior-1.jpg" alt="101 Greenwich Street - Office Space" class="thumbnail">
+                                <img src="commercial-interior-2.jpg" alt="101 Greenwich Street - Conference Room" class="thumbnail">
+                                <img src="commercial-interior-3.jpg" alt="101 Greenwich Street - Lobby" class="thumbnail">
+                            </div>
                         </div>
-                    </div>
-                    <div class="property-content">
-                        <h3>87-22 168th Street</h3>
-                        <p class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Jamaica, NY 11432
-                        </p>
-                        <div class="property-details">
-                            <span><i class="fas fa-home"></i> Single Family</span>
-                            <span><i class="fas fa-bed"></i> 4 Bedrooms</span>
-                            <span><i class="fas fa-ruler-combined"></i> 2,200 sq ft</span>
-                        </div>
-                        <p class="property-description">
-                            Beautiful single-family home in Jamaica with spacious rooms, updated kitchen, and lovely backyard.
-                        </p>
-                        <div class="property-action">
-                            <a href="property-details.html" class="btn-view">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Property 6 -->
-                <div class="property-card" data-aos="fade-up" data-aos-delay="100" data-category="luxury">
-                    <div class="property-badge">Luxury</div>
-                    <div class="property-image">
-                        <img src="luxury-1.jpg" alt="Luxury Apartment in Manhattan">
-                        <div class="image-overlay">
-                            <a href="property-details.html" class="overlay-btn">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="property-content">
-                        <h3>Park Avenue Residence</h3>
-                        <p class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Manhattan, NY 10022
-                        </p>
-                        <div class="property-details">
-                            <span><i class="fas fa-building"></i> Luxury Condo</span>
-                            <span><i class="fas fa-bed"></i> 3 Bedrooms</span>
-                            <span><i class="fas fa-ruler-combined"></i> 3,500 sq ft</span>
-                        </div>
-                        <p class="property-description">
-                            Exquisite luxury condominium on Park Avenue offering panoramic city views and world-class amenities.
-                        </p>
-                        <div class="property-action">
-                            <a href="property-details.html" class="btn-view">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Property 7 -->
-                <div class="property-card" data-aos="fade-up" data-aos-delay="200" data-category="commercial">
-                    <div class="property-badge">Commercial</div>
-                    <div class="property-image">
-                        <img src="commercial-1.jpg" alt="Commercial Space in Brooklyn">
-                        <div class="image-overlay">
-                            <a href="property-details.html" class="overlay-btn">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="property-content">
-                        <h3>Brooklyn Business Center</h3>
-                        <p class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Brooklyn, NY 11201
-                        </p>
-                        <div class="property-details">
-                            <span><i class="fas fa-briefcase"></i> Commercial</span>
-                            <span><i class="fas fa-ruler-combined"></i> 18,000 sq ft</span>
-                            <span><i class="fas fa-door-open"></i> 8 Units</span>
-                        </div>
-                        <p class="property-description">
-                            Modern commercial complex in Brooklyn featuring flexible office spaces and retail opportunities.
-                        </p>
-                        <div class="property-action">
-                            <a href="property-details.html" class="btn-view">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Property 8 -->
-                <div class="property-card" data-aos="fade-up" data-aos-delay="300" data-category="residential">
-                    <div class="property-badge">Residential</div>
-                    <div class="property-image">
-                        <img src="residential-2.jpg" alt="Residential Property in Flushing">
-                        <div class="image-overlay">
-                            <a href="property-details.html" class="overlay-btn">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="property-content">
-                        <h3>149-35 Northern Blvd</h3>
-                        <p class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Flushing, NY 11354
-                        </p>
-                        <div class="property-details">
-                            <span><i class="fas fa-home"></i> Multi-Family</span>
-                            <span><i class="fas fa-building"></i> 3 Units</span>
-                            <span><i class="fas fa-ruler-combined"></i> 3,200 sq ft</span>
-                        </div>
-                        <p class="property-description">
-                            Well-situated multi-family property in Flushing with excellent rental history and convenient access to amenities.
-                        </p>
-                        <div class="property-action">
-                            <a href="property-details.html" class="btn-view">View Details</a>
+                        <div class="detail-content">
+                            <h2>101 Greenwich Street</h2>
+                            <p class="detail-location"><i class="fas fa-map-marker-alt"></i> Manhattan, NY 10022</p>
+                            <div class="detail-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>Property Type</span>
+                                    <strong>Commercial</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-building"></i>
+                                    <span>Building Class</span>
+                                    <strong>Class A</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>Total Area</span>
+                                    <strong>25,000 sq ft</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-door-open"></i>
+                                    <span>Available Units</span>
+                                    <strong>Multiple</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Year Built</span>
+                                    <strong>2005</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-hammer"></i>
+                                    <span>Renovated</span>
+                                    <strong>2019</strong>
+                                </div>
+                            </div>
+                            <div class="detail-description">
+                                <h3>Property Description</h3>
+                                <p>Prestigious commercial office space located in the heart of Downtown Manhattan. This Class A building offers approximately 25,000 square feet of premium office space with flexible configurations to accommodate businesses of various sizes.</p>
+                                <p>The property features state-of-the-art building systems, floor-to-ceiling windows providing abundant natural light and panoramic views of the city, fiber optic connectivity, and modern amenities. The impressive lobby is staffed with 24/7 security and features high-end finishes.</p>
+                                <p>Ideal location with immediate access to multiple subway lines, fine dining, and premium retail. This trophy asset represents an exceptional opportunity for businesses seeking a prestigious Manhattan address with top-tier amenities.</p>
+                            </div>
+                            <div class="detail-features">
+                                <h3>Property Features</h3>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Class A office building</li>
+                                    <li><i class="fas fa-check"></i> Flexible floor plans</li>
+                                    <li><i class="fas fa-check"></i> Floor-to-ceiling windows</li>
+                                    <li><i class="fas fa-check"></i> City views</li>
+                                    <li><i class="fas fa-check"></i> State-of-the-art systems</li>
+                                    <li><i class="fas fa-check"></i> 24/7 security</li>
+                                    <li><i class="fas fa-check"></i> Fiber optic connectivity</li>
+                                    <li><i class="fas fa-check"></i> Premium finishes</li>
+                                    <li><i class="fas fa-check"></i> Central location</li>
+                                    <li><i class="fas fa-check"></i> Access to public transit</li>
+                                </ul>
+                            </div>
+                            <div class="detail-cta">
+                                <a href="index.html#contact" class="btn-primary">Contact Us About This Property</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Pagination -->
-            <div class="pagination" data-aos="fade-up">
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <span class="page-dots">...</span>
-                <button class="page-btn">8</button>
-                <button class="page-nav next">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+            <!-- More Properties Coming Soon Section -->
+            <div class="more-properties-section" data-aos="fade-up">
+                <div class="more-properties-content">
+                    <div class="more-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h2>More Properties Coming Soon</h2>
+                    <p>We're constantly expanding our portfolio with premium properties across New York City.</p>
+                    <p>Check back regularly or subscribe to our newsletter to be the first to know about our newest listings.</p>
+                    <a href="index.html#contact" class="btn-primary">
+                        <span>Get Updates</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
