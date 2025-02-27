@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Properties | Century One Management</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore Century One Management's portfolio of premium managed properties. From luxury residential homes to commercial spaces across New York.">
+    <meta name="keywords" content="property management, luxury properties, commercial properties, real estate, rental properties, New York real estate">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Animation Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/properties.css">
+</head>
+<body>
+   
+    <!-- Luxury Preloader -->
+    <div class="preloader">
+        <div class="loader-logo">
+            <img src="logo1.png" alt="Century One Icon">
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="premium-header">
+        <div class="header-container">
+            <!-- Logo Section -->
+            <div class="logo-wrapper">
+                <a href="/" class="logo-link">
+                    <img src="logo1.png" alt="Century One Management" class="header-logo">
+                </a>
+            </div>
+
+            <!-- Navigation with Mobile Buttons Inside -->
+            <nav class="main-nav">
+                <!-- Navigation Links -->
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="services.html" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="properties.html" class="nav-link active">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                
+                <!-- Mobile-Only Buttons -->
+                <div class="mobile-header-buttons">
+                    <a href="https://centuryone.app.doorloop.com" target="_blank" rel="noopener" class="portal-btn tenant-portal">
+                        <i class="fas fa-user"></i>
+                        <span>Tenant Portal</span>
+                    </a>
+                    
+                    <a href="#contact" class="cta-btn">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Desktop-Only Buttons -->
+            <div class="header-buttons">
+                <a href="https://centuryone.app.doorloop.com" target="_blank" rel="noopener" class="portal-btn tenant-portal">
+                    <i class="fas fa-user"></i>
+                    <span>Tenant Portal</span>
+                </a>
+                
+                <a href="#contact" class="cta-btn">
+                    <span>Get Started</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" aria-label="Menu">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Properties Hero Section -->
+    <section class="properties-hero">
+        <div class="hero-overlay"></div>
+        <div class="properties-hero-content">
+            <h1 data-aos="fade-up">Our Premium <span class="text-accent">Properties</span></h1>
+            <div class="accent-bar" data-aos="fade-up" data-aos-delay="100"></div>
+            <p data-aos="fade-up" data-aos-delay="200">Explore our exceptional portfolio of carefully managed properties</p>
+        </div>
+    </section>
+
+    <!-- Properties Filter Section -->
+    <section class="properties-filter-section">
+        <div class="container">
+            <div class="filter-container" data-aos="fade-up">
+                <div class="filter-list">
+                    <button class="filter-btn active" data-filter="all">All Properties</button>
+                    <button class="filter-btn" data-filter="residential">Residential</button>
+                    <button class="filter-btn" data-filter="commercial">Commercial</button>
+                    <button class="filter-btn" data-filter="luxury">Luxury</button>
+                </div>
+                
+                <div class="search-sort">
+                    <div class="search-box">
+                        <input type="text" id="propertySearch" placeholder="Search properties...">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    
+                    <div class="sort-dropdown">
+                        <select id="propertySorting">
+                            <option value="default">Default Sorting</option>
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="aToZ">A to Z</option>
+                            <option value="zToA">Z to A</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Grid Section -->
+    <section class="properties-grid-section">
+        <div class="container">
+            <div class="properties-grid">
+                <!-- Property 1 -->
+                <div class="property-card" data-aos="fade-up" data-category="residential luxury">
+                    <div class="property-badge">Luxury</div>
+                    <div class="property-image">
+                        <img src="10226183rd Pl.jpeg" alt="10226 183rd Pl - Hollis, NY">
+                        <div class="image-overlay">
+                            <a href="property-details.html" class="overlay-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h3>10226 183rd Pl</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Hollis, NY 11423
+                        </p>
+                        <div class="property-details">
+                            <span><i class="fas fa-home"></i> Multi-Family</span>
+                            <span><i class="fas fa-building"></i> 2 Units</span>
+                            <span><i class="fas fa-ruler-combined"></i> 2,500 sq ft</span>
+                        </div>
+                        <p class="property-description">
+                            Elegant multi-family property in a prime location with modern amenities and excellent rental potential.
+                        </p>
+                        <div class="property-action">
+                            <a href="property-details.html" class="btn-view">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 2 -->
+                <div class="property-card" data-aos="fade-up" data-aos-delay="100" data-category="residential">
+                    <div class="property-badge">Residential</div>
+                    <div class="property-image">
+                        <img src="1422084thDr.jpeg" alt="14220 84th Dr - Jamaica, NY">
+                        <div class="image-overlay">
+                            <a href="property-details.html" class="overlay-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h3>14220 84th Dr</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Jamaica, NY 11435
+                        </p>
+                        <div class="property-details">
+                            <span><i class="fas fa-home"></i> Multi-Family</span>
+                            <span><i class="fas fa-building"></i> 1 Unit</span>
+                            <span><i class="fas fa-ruler-combined"></i> 1,800 sq ft</span>
+                        </div>
+                        <p class="property-description">
+                            Charming residential property in Jamaica offering comfortable living spaces in a convenient neighborhood.
+                        </p>
+                        <div class="property-action">
+                            <a href="property-details.html" class="btn-view">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 3 -->
+                <div class="property-card" data-aos="fade-up" data-aos-delay="200" data-category="residential">
+                    <div class="property-badge">Residential</div>
+                    <div class="property-image">
+                        <img src="615598St.jpeg" alt="61-55 98 Street - Rego Park, NY">
+                        <div class="image-overlay">
+                            <a href="property-details.html" class="overlay-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h3>61-55 98 St</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Rego Park, NY 11374
+                        </p>
+                        <div class="property-details">
+                            <span><i class="fas fa-home"></i> Multi-Family</span>
+                            <span><i class="fas fa-building"></i> 1 Unit</span>
+                            <span><i class="fas fa-ruler-combined"></i> 1,950 sq ft</span>
+                        </div>
+                        <p class="property-description">
+                            Well-maintained property in the heart of Rego Park, featuring modern amenities and excellent access to transportation.
+                        </p>
+                        <div class="property-action">
+                            <a href="property-details.html" class="btn-view">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 4 -->
+                <div class="property-card" data-aos="fade-up" data-aos-delay="300" data-category="commercial">
+                    <div class="property-badge">Commercial</div>
+                    <div class="property-image">
+                        <img src="2rector.jpg" alt="Commercial Office Building">
+                        <div class="image-overlay">
+                            <a href="property-details.html" class="overlay-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h3>101 Greenwich Street</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Manhattan, NY 10022
+                        </p>
+                        <div class="property-details">
+                            <span><i class="fas fa-briefcase"></i> Commercial</span>
+                            <span><i class="fas fa-ruler-combined"></i> 25,000 sq ft</span>
+                            <span><i class="fas fa-door-open"></i> Multiple Units</span>
+                        </div>
+                        <p class="property-description">
+                            Premium commercial space in downtown Manhattan with state-of-the-art facilities and prestigious address.
+                        </p>
+                        <div class="property-action">
+                            <a href="property-details.html" class="btn-view">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 5 -->
+                <div class="property-card" data-aos="fade-up" data-category="residential">
+                    <div class="property-badge">Residential</div>
+                    <div class="property-image">
+                        <img src="residential-1.jpg" alt="Residential Property in Queens">
+                        <div class="image-overlay">
+                            <a href="property-details.html" class="overlay-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h3>87-22 168th Street</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Jamaica, NY 11432
+                        </p>
+                        <div class="property-details">
+                            <span><i class="fas fa-home"></i> Single Family</span>
+                            <span><i class="fas fa-bed"></i> 4 Bedrooms</span>
+                            <span><i class="fas fa-ruler-combined"></i> 2,200 sq ft</span>
+                        </div>
+                        <p class="property-description">
+                            Beautiful single-family home in Jamaica with spacious rooms, updated kitchen, and lovely backyard.
+                        </p>
+                        <div class="property-action">
+                            <a href="property-details.html" class="btn-view">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 6 -->
+                <div class="property-card" data-aos="fade-up" data-aos-delay="100" data-category="luxury">
+                    <div class="property-badge">Luxury</div>
+                    <div class="property-image">
+                        <img src="luxury-1.jpg" alt="Luxury Apartment in Manhattan">
+                        <div class="image-overlay">
+                            <a href="property-details.html" class="overlay-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h3>Park Avenue Residence</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Manhattan, NY 10022
+                        </p>
+                        <div class="property-details">
+                            <span><i class="fas fa-building"></i> Luxury Condo</span>
+                            <span><i class="fas fa-bed"></i> 3 Bedrooms</span>
+                            <span><i class="fas fa-ruler-combined"></i> 3,500 sq ft</span>
+                        </div>
+                        <p class="property-description">
+                            Exquisite luxury condominium on Park Avenue offering panoramic city views and world-class amenities.
+                        </p>
+                        <div class="property-action">
+                            <a href="property-details.html" class="btn-view">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 7 -->
+                <div class="property-card" data-aos="fade-up" data-aos-delay="200" data-category="commercial">
+                    <div class="property-badge">Commercial</div>
+                    <div class="property-image">
+                        <img src="commercial-1.jpg" alt="Commercial Space in Brooklyn">
+                        <div class="image-overlay">
+                            <a href="property-details.html" class="overlay-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h3>Brooklyn Business Center</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Brooklyn, NY 11201
+                        </p>
+                        <div class="property-details">
+                            <span><i class="fas fa-briefcase"></i> Commercial</span>
+                            <span><i class="fas fa-ruler-combined"></i> 18,000 sq ft</span>
+                            <span><i class="fas fa-door-open"></i> 8 Units</span>
+                        </div>
+                        <p class="property-description">
+                            Modern commercial complex in Brooklyn featuring flexible office spaces and retail opportunities.
+                        </p>
+                        <div class="property-action">
+                            <a href="property-details.html" class="btn-view">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 8 -->
+                <div class="property-card" data-aos="fade-up" data-aos-delay="300" data-category="residential">
+                    <div class="property-badge">Residential</div>
+                    <div class="property-image">
+                        <img src="residential-2.jpg" alt="Residential Property in Flushing">
+                        <div class="image-overlay">
+                            <a href="property-details.html" class="overlay-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h3>149-35 Northern Blvd</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Flushing, NY 11354
+                        </p>
+                        <div class="property-details">
+                            <span><i class="fas fa-home"></i> Multi-Family</span>
+                            <span><i class="fas fa-building"></i> 3 Units</span>
+                            <span><i class="fas fa-ruler-combined"></i> 3,200 sq ft</span>
+                        </div>
+                        <p class="property-description">
+                            Well-situated multi-family property in Flushing with excellent rental history and convenient access to amenities.
+                        </p>
+                        <div class="property-action">
+                            <a href="property-details.html" class="btn-view">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" data-aos="fade-up">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <span class="page-dots">...</span>
+                <button class="page-btn">8</button>
+                <button class="page-nav next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Management CTA -->
+    <section class="property-cta-section">
+        <div class="cta-overlay"></div>
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Own a Property? Let Us Manage It for You</h2>
+                <p>Experience hassle-free property management with our comprehensive services tailored to your specific needs.</p>
+                <div class="cta-buttons">
+                    <a href="index.html#contact" class="btn-cta-primary">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="services.html" class="btn-cta-secondary">
+                        <span>Explore Services</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <!-- Company Info -->
+                    <div class="footer-section">
+                        <img src="logo1.png" alt="Century One Management" class="footer-logo">
+                        <p>Elevating property management to new heights of excellence and innovation.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html#home">Home</a></li>
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="properties.html">Properties</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Services -->
+                    <div class="footer-section">
+                        <h3>Our Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="services.html#residential">Residential Management</a></li>
+                            <li><a href="services.html#commercial">Commercial Management</a></li>
+                            <li><a href="services.html#luxury">Luxury Properties</a></li>
+                            <li><a href="services.html#consulting">Investment Consulting</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="footer-section">
+                        <h3>Contact Us</h3>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>96-14 Queens Blvd<br><br>Rego Park, NY 11374</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span> (718) 644 - 4666 </span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span>info@centuryonemanagement.com </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>&copy; 2025 Century One Management. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="accessibility.html">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/properties.js"></script>
+</body>
+</html>
