@@ -260,6 +260,7 @@
     width: 50px;
     height: 50px;
     background: var(--gradient-accent);
+    border: none;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -269,6 +270,7 @@
     transform: translateY(20px);
     opacity: 0;
     transition: var(--transition-medium);
+    cursor: pointer;
 }
 
 .property-card:hover .overlay-btn {
@@ -347,6 +349,7 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
+    cursor: pointer;
 }
 
 .btn-view::before {
@@ -371,6 +374,106 @@
 .btn-view:hover::before {
     transform: scaleX(1);
     transform-origin: left;
+}
+
+/* No Results Message */
+.no-results-message {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 5rem 3rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    margin: 4rem auto;
+    max-width: 600px;
+}
+
+.no-results-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(4, 99, 7, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--primary);
+    margin: 0 auto 2rem;
+}
+
+.no-results-message h3 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+.no-results-message p {
+    font-size: 1.6rem;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+}
+
+.reset-filters-btn {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: var(--gradient-primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-medium);
+}
+
+.reset-filters-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* More Properties Coming Soon Section */
+.more-properties-section {
+    padding: 60px 0;
+    margin-top: 40px;
+    background: linear-gradient(135deg, rgba(4, 99, 7, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.more-properties-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.more-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 3rem;
+}
+
+.more-properties-section h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.more-properties-section p {
+    font-size: 1.6rem;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.more-properties-section .btn-primary {
+    margin-top: 20px;
+    display: inline-flex;
 }
 
 /* Pagination */
@@ -500,6 +603,243 @@
     transform: translateY(-5px);
 }
 
+/* Property Details Modal Styles */
+.property-details-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: none;
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.property-details-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.property-details-container {
+    max-width: 1200px;
+    margin: 80px auto;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    overflow: hidden;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.property-details-overlay.active .property-details-container {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.close-details {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition-medium);
+}
+
+.close-details:hover {
+    background: var(--accent);
+    transform: rotate(90deg);
+}
+
+.property-details-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Gallery Section */
+.detail-gallery {
+    width: 100%;
+    position: relative;
+}
+
+.main-detail-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
+}
+
+.detail-thumbnails {
+    display: flex;
+    padding: 15px;
+    gap: 10px;
+    background: var(--gradient-primary);
+}
+
+.thumbnail {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition-medium);
+    border: 2px solid transparent;
+}
+
+.thumbnail:hover {
+    transform: translateY(-5px);
+}
+
+.thumbnail.active {
+    border-color: var(--accent);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Detail Content Section */
+.detail-content {
+    padding: 40px;
+}
+
+.detail-content h2 {
+    font-size: 3.2rem;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.detail-location {
+    font-size: 1.8rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+/* Specifications Grid */
+.detail-specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(4, 99, 7, 0.1);
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.spec-item i {
+    font-size: 2.4rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.spec-item span {
+    font-size: 1.4rem;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.spec-item strong {
+    font-size: 1.8rem;
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* Description Section */
+.detail-description {
+    margin-bottom: 40px;
+}
+
+.detail-description h3, 
+.detail-features h3 {
+    font-size: 2.2rem;
+    color: var(--text);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.detail-description h3::after, 
+.detail-features h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 50px;
+}
+
+.detail-description p {
+    font-size: 1.6rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* Features List */
+.detail-features {
+    margin-bottom: 40px;
+}
+
+.detail-features ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+.detail-features li {
+    font-size: 1.5rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.detail-features li i {
+    color: var(--primary);
+    font-size: 1.6rem;
+}
+
+/* CTA Button */
+.detail-cta {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.detail-cta .btn-primary {
+    padding: 15px 30px;
+    font-size: 1.6rem;
+}
+
+/* Hidden Details Content */
+.hidden-property-details {
+    display: none;
+}
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
     .container {
@@ -509,6 +849,14 @@
     .properties-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 3rem;
+    }
+    
+    .property-details-container {
+        margin: 60px 30px;
+    }
+    
+    .main-detail-image {
+        height: 400px;
     }
 }
 
@@ -532,6 +880,10 @@
     
     .properties-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .property-details-container {
+        margin: 50px 20px;
     }
 }
 
@@ -590,6 +942,40 @@
         max-width: 300px;
         justify-content: center;
     }
+    
+    .main-detail-image {
+        height: 350px;
+    }
+    
+    .detail-thumbnails {
+        padding: 10px;
+    }
+    
+    .thumbnail {
+        width: 70px;
+        height: 50px;
+    }
+    
+    .detail-content {
+        padding: 30px 20px;
+    }
+    
+    .detail-content h2 {
+        font-size: 2.6rem;
+    }
+    
+    .detail-location {
+        font-size: 1.6rem;
+    }
+    
+    .detail-specs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .detail-features ul {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 576px) {
@@ -617,12 +1003,6 @@
         grid-template-columns: repeat(2, 1fr);
         width: 100%;
     }
-    
-    .filter-btn {
-        width: 100%;
-        text-align: center;
-    }
-    
     .property-content {
         padding: 2rem;
     }
@@ -635,13 +1015,57 @@
         font-size: 1.4rem;
     }
     
-    .cta-content h2 {
+    .property-details-container {
+        margin: 40px 15px;
+    }
+    
+    .main-detail-image {
+        height: 250px;
+    }
+    
+    .detail-thumbnails {
+        overflow-x: auto;
+        padding: 10px;
+    }
+    
+    .thumbnail {
+        width: 60px;
+        height: 45px;
+        flex-shrink: 0;
+    }
+    
+    .detail-content {
+        padding: 25px 15px;
+    }
+    
+    .detail-content h2 {
+        font-size: 2.2rem;
+    }
+    
+    .detail-specs {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .spec-item {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .spec-item i {
+        margin-bottom: 0;
+    }
+    
+    .more-properties-section h2 {
         font-size: 2.4rem;
     }
     
-    .cta-content p {
-        font-size: 1.6rem;
-        margin-bottom: 3rem;
+    .more-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2.2rem;
     }
 }
 
@@ -651,7 +1075,8 @@
     .properties-filter-section,
     .property-cta-section,
     .footer,
-    .back-to-top {
+    .back-to-top,
+    .property-details-overlay {
         display: none;
     }
     
@@ -700,5 +1125,90 @@
     .property-details span,
     .property-description {
         font-size: 10pt;
+    }
+    
+    .more-properties-section {
+        border: 1pt dashed #ccc;
+        padding: 1cm;
+        background: none;
+    }
+    
+    .more-icon {
+        display: none;
+    }
+}
+
+/* Fade animations for property details modal */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Custom animations for thumbnail sliding */
+@keyframes thumbHover {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.thumbnail:hover {
+    animation: thumbHover 1s infinite;
+}
+
+/* Loading state for property cards */
+.property-card.loading {
+    position: relative;
+}
+
+.property-card.loading::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.5) 50%, 
+        rgba(255, 255, 255, 0) 100%);
+    z-index: 10;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Focus styles for accessibility */
+.filter-btn:focus,
+.search-box input:focus,
+.sort-dropdown select:focus,
+.btn-view:focus,
+.overlay-btn:focus,
+.close-details:focus,
+.thumbnail:focus {
+    outline: 3px solid rgba(4, 99, 7, 0.5);
+    outline-offset: 2px;
+}
+
+/* Reduced motion media query for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .property-card,
+    .property-card:hover,
+    .property-image img,
+    .property-card:hover .property-image img,
+    .thumbnail,
+    .thumbnail:hover,
+    .property-details-container,
+    .close-details:hover,
+    .btn-view::before,
+    .btn-cta-primary:hover,
+    .btn-cta-secondary:hover {
+        transition: none;
+        transform: none;
+        animation: none;
     }
 }
