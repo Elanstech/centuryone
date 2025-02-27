@@ -23,6 +23,87 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFilter = 'all';
     let searchTerm = '';
     
+    // Property Details Modal Functionality
+    const propertyDetailsOverlay = document.getElementById('propertyDetailsOverlay');
+    const detailsContent = document.querySelector('.property-details-content');
+    const closeDetailsBtn = document.querySelector('.close-details');
+    const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+    
+    // Function to open property details modal
+    const openPropertyDetails = (propertyCard) => {
+        // Get the hidden details content
+        const hiddenDetails = propertyCard.querySelector('.hidden-property-details').cloneNode(true);
+        
+        // Clear previous content
+        detailsContent.innerHTML = '';
+        
+        // Add new content
+        detailsContent.appendChild(hiddenDetails.children[0]); // Gallery
+        detailsContent.appendChild(hiddenDetails.children[0]); // Content (now first child after gallery is removed)
+        
+        // Set up thumbnail navigation
+        setupThumbnailNavigation();
+        
+        // Show the overlay
+        propertyDetailsOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    };
+    
+    // Function to close property details modal
+    const closePropertyDetails = () => {
+        propertyDetailsOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    };
+    
+    // Setup thumbnail navigation in modal
+    const setupThumbnailNavigation = () => {
+        const thumbnails = detailsContent.querySelectorAll('.thumbnail');
+        const mainImage = detailsContent.querySelector('.main-detail-image');
+        
+        if (!thumbnails.length || !mainImage) return;
+        
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                // Update active class
+                thumbnails.forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+                
+                // Update main image
+                mainImage.src = thumb.src;
+                mainImage.alt = thumb.alt;
+            });
+        });
+    };
+    
+    // Add event listeners for view details buttons
+    viewDetailsBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const propertyCard = btn.closest('.property-card');
+            openPropertyDetails(propertyCard);
+        });
+    });
+    
+    // Close details modal on button click
+    if (closeDetailsBtn) {
+        closeDetailsBtn.addEventListener('click', closePropertyDetails);
+    }
+    
+    // Close details modal when clicking outside the content
+    if (propertyDetailsOverlay) {
+        propertyDetailsOverlay.addEventListener('click', (e) => {
+            if (e.target === propertyDetailsOverlay) {
+                closePropertyDetails();
+            }
+        });
+    }
+    
+    // Close details modal with escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && propertyDetailsOverlay.classList.contains('active')) {
+            closePropertyDetails();
+        }
+    });
+    
     // Function to handle property filtering
     const filterProperties = () => {
         // Track visible cards count
@@ -231,8 +312,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 pageButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
                 
-                // In a real implementation, this would load the corresponding page
-                // For demo purposes, we'll just scroll to top
+                // In this implementation, we're not actually loading new pages
+                // since all properties are displayed on one page.
+                // This would typically connect to server pagination in a real implementation.
+                
+                // Scroll to top of properties section for better UX
                 window.scrollTo({
                     top: document.querySelector('.properties-grid-section').offsetTop - 120,
                     behavior: 'smooth'
@@ -302,4 +386,60 @@ document.addEventListener('DOMContentLoaded', () => {
         // Scroll to active filter (for mobile)
         scrollToActiveFilter();
     });
+    
+    // Handle Back to Top button
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        // Scroll to top when clicked
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Handle "More Properties Coming Soon" section animations
+    const morePropertiesSection = document.querySelector('.more-properties-section');
+    if (morePropertiesSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add extra animation when section comes into view
+                    const moreIcon = morePropertiesSection.querySelector('.more-icon');
+                    if (moreIcon) {
+                        moreIcon.style.transform = 'scale(1.1)';
+                        setTimeout(() => {
+                            moreIcon.style.transform = '';
+                        }, 500);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(morePropertiesSection);
+    }
+    
+    // Preload images for better user experience
+    const preloadPropertyImages = () => {
+        // Get all thumbnail images that might be needed
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        
+        thumbnails.forEach(thumb => {
+            const img = new Image();
+            img.src = thumb.src;
+        });
+    };
+    
+    // Wait until page is fully loaded before preloading images
+    window.addEventListener('load', preloadPropertyImages);
 });
