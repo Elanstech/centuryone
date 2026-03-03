@@ -3,25 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Century One Management</title>
-    
+    <title>Contact Us | Century One Management — NYC Premium Property Management</title>
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Get in touch with Century One Management. Contact us for premium property management services in New York.">
-    <meta name="keywords" content="contact property management, Century One contact, NYC property management contact">
-    
+    <meta name="description" content="Contact Century One Management for premium property management services in New York City. Get a free consultation for residential, commercial, and luxury property management in Queens, Manhattan, and Brooklyn.">
+    <meta name="keywords" content="contact property management NYC, Century One Management contact, New York property management consultation, Queens property manager, Manhattan property management, Brooklyn property management, luxury property management NYC, tenant services NYC">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.centuryonemanagement.com/contact.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Contact Century One Management | NYC Property Management">
+    <meta property="og:description" content="Get in touch for premium property management services across New York City. Free consultations available.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.centuryonemanagement.com/contact.html">
+    <meta property="og:image" content="https://www.centuryonemanagement.com/og-contact.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Century One Management">
+    <meta name="twitter:description" content="Premium property management services in NYC. Reach out for a free consultation.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "Century One Management",
+        "description": "Premium property management services in New York City",
+        "url": "https://www.centuryonemanagement.com",
+        "telephone": "+1-718-644-4666",
+        "email": "info@centuryonemanagement.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "96-14 Queens Blvd",
+            "addressLocality": "Rego Park",
+            "addressRegion": "NY",
+            "postalCode": "11374",
+            "addressCountry": "US"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Sunday",
+                "opens": "10:00",
+                "closes": "15:00"
+            }
+        ],
+        "areaServed": {
+            "@type": "City",
+            "name": "New York"
+        },
+        "sameAs": []
+    }
+    </script>
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Animation Libraries -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/contact.css">
 </head>
 <body>
-   
+
     <!-- Luxury Preloader -->
     <div class="preloader">
         <div class="loader-logo">
@@ -35,47 +89,30 @@
     <!-- Navigation -->
     <header class="premium-header">
         <div class="header-container">
-            <!-- Logo Section -->
             <div class="logo-wrapper">
                 <a href="index.html" class="logo-link">
                     <img src="logo1.png" alt="Century One Management" class="header-logo">
                 </a>
             </div>
-
-            <!-- Navigation with Mobile Buttons Inside -->
             <nav class="main-nav">
-                <!-- Navigation Links -->
                 <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="services.html" class="nav-link">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="properties.html" class="nav-link">Properties</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link active">Contact</a>
-                    </li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="properties.html" class="nav-link">Properties</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
                 </ul>
             </nav>
-
-            <!-- Desktop-Only Buttons -->
             <div class="header-buttons">
                 <a href="https://centuryone.app.doorloop.com" target="_blank" rel="noopener" class="portal-btn tenant-portal">
                     <i class="fas fa-user"></i>
                     <span>Tenant Portal</span>
                 </a>
-                
                 <a href="#contact-form" class="cta-btn">
                     <span>Get Started</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
-
-            <!-- Mobile Menu Toggle -->
-            <button class="mobile-toggle" aria-label="Menu">
+            <button class="mobile-toggle" aria-label="Toggle navigation menu">
                 <span class="toggle-line"></span>
                 <span class="toggle-line"></span>
                 <span class="toggle-line"></span>
@@ -83,226 +120,247 @@
         </div>
     </header>
 
-    <!-- Contact Hero Section -->
-    <section class="contact-hero">
-        <div class="contact-hero-overlay"></div>
+    <!-- Hero Section -->
+    <section class="contact-hero" aria-label="Contact page hero">
+        <div class="hero-bg-shapes">
+            <div class="hero-shape hero-shape--1"></div>
+            <div class="hero-shape hero-shape--2"></div>
+            <div class="hero-shape hero-shape--3"></div>
+        </div>
         <div class="contact-hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-envelope"></i>
-                <span>GET IN TOUCH</span>
+            <span class="hero-label">Get In Touch</span>
+            <h1>Let's Talk About <span class="text-accent">Your Property</span></h1>
+            <p class="hero-sub">Whether you're a property owner seeking expert management or a prospective tenant, we're here to help you every step of the way.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-count="500">0</span><span class="hero-stat-plus">+</span>
+                    <span class="hero-stat-label">Units Managed</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-count="24">0</span><span class="hero-stat-plus">/7</span>
+                    <span class="hero-stat-label">Support Available</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-count="98">0</span><span class="hero-stat-plus">%</span>
+                    <span class="hero-stat-label">Client Satisfaction</span>
+                </div>
             </div>
-            <h1>Contact <span class="text-accent">Century One</span></h1>
-            <p>Let's discuss how we can elevate your property management experience</p>
+        </div>
+        <div class="hero-scroll-indicator" aria-hidden="true">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <!-- Contact Information Cards -->
-    <section class="contact-info-section">
-        <div class="contact-info-container">
-            <div class="info-cards-grid">
-                <!-- Address Card -->
-                <div class="info-card" data-aos="fade-up">
-                    <div class="info-card-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Visit Our Office</h3>
-                    <p>96-14 Queens Blvd<br>Rego Park, NY 11374</p>
-                    <a href="https://maps.google.com/?q=96-14+Queens+Blvd+Rego+Park+NY+11374" target="_blank" class="info-link">
-                        Get Directions <i class="fas fa-arrow-right"></i>
-                    </a>
+    <!-- Quick Contact Bar -->
+    <section class="quick-contact-bar" aria-label="Quick contact options">
+        <div class="qc-container">
+            <a href="tel:7186444666" class="qc-item">
+                <div class="qc-icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="qc-text">
+                    <span class="qc-label">Call Us</span>
+                    <span class="qc-value">(718) 644-4666</span>
                 </div>
-
-                <!-- Phone Card -->
-                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="info-card-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <h3>Call Us</h3>
-                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Sunday: 10:00 AM - 3:00 PM</p>
-                    <a href="tel:7186444666" class="info-link">
-                        (718) 644-4666 <i class="fas fa-arrow-right"></i>
-                    </a>
+            </a>
+            <a href="mailto:info@centuryonemanagement.com" class="qc-item">
+                <div class="qc-icon"><i class="fas fa-envelope"></i></div>
+                <div class="qc-text">
+                    <span class="qc-label">Email Us</span>
+                    <span class="qc-value">info@centuryonemanagement.com</span>
                 </div>
-
-                <!-- Email Card -->
-                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="info-card-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email Us</h3>
-                    <p>For general inquiries and support<br>We respond within 24 hours</p>
-                    <a href="mailto:info@centuryonemanagement.com" class="info-link">
-                        info@centuryonemanagement.com <i class="fas fa-arrow-right"></i>
-                    </a>
+            </a>
+            <a href="https://maps.google.com/?q=96-14+Queens+Blvd+Rego+Park+NY+11374" target="_blank" rel="noopener" class="qc-item">
+                <div class="qc-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="qc-text">
+                    <span class="qc-label">Visit Us</span>
+                    <span class="qc-value">96-14 Queens Blvd, Rego Park</span>
                 </div>
-            </div>
+            </a>
+            <a href="https://centuryone.app.doorloop.com" target="_blank" rel="noopener" class="qc-item qc-item--accent">
+                <div class="qc-icon"><i class="fas fa-sign-in-alt"></i></div>
+                <div class="qc-text">
+                    <span class="qc-label">Tenants</span>
+                    <span class="qc-value">Access Portal</span>
+                </div>
+            </a>
         </div>
     </section>
 
     <!-- Main Contact Section -->
-    <section id="contact-form" class="main-contact-section">
+    <section id="contact-form" class="main-contact-section" aria-label="Contact form and details">
         <div class="main-contact-container">
-            <!-- Left Side - Contact Details -->
-            <div class="contact-details" data-aos="fade-right">
-                <div class="section-header-left">
-                    <h2>Let's Start a Conversation</h2>
-                    <div class="accent-bar-left"></div>
-                    <p class="contact-intro">
-                        Whether you're looking to maximize your property investment or seeking premium management services, 
-                        our team of experts is here to help you achieve your goals.
-                    </p>
-                </div>
 
-                <div class="contact-features">
-                    <div class="contact-feature-item">
-                        <div class="feature-check">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Expert Consultation</h4>
-                            <p>Free property assessment and management plan</p>
-                        </div>
+            <!-- Left Column — Form -->
+            <div class="contact-form-col">
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2>Send Us a Message</h2>
+                        <p>Fill out the form and our team will respond within 24 hours.</p>
                     </div>
-
-                    <div class="contact-feature-item">
-                        <div class="feature-check">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Quick Response</h4>
-                            <p>We respond to all inquiries within 24 hours</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-feature-item">
-                        <div class="feature-check">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Personalized Service</h4>
-                            <p>Tailored solutions for your unique needs</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-feature-item">
-                        <div class="feature-check">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>No Obligation</h4>
-                            <p>Free consultation with no commitment required</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="emergency-contact">
-                    <div class="emergency-icon">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="emergency-text">
-                        <h4>Emergency Maintenance?</h4>
-                        <p>For urgent property issues, call our 24/7 hotline:</p>
-                        <a href="tel:7186444666" class="emergency-phone">(718) 644-4666</a>
-                    </div>
-                </div>
-
-                <div class="social-connect">
-                    <h4>Connect With Us</h4>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+                    <!-- Elfsight Contact Form Widget -->
+                    <div class="elfsight-wrapper">
+                        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+                        <div class="elfsight-app-881b9b4f-5e51-4454-9b2a-9e7d6f33a0e9" data-elfsight-app-lazy></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Side - Contact Form -->
-            <div class="contact-form-container" data-aos="fade-left">
-                <div class="form-wrapper">
-                    <div class="form-header">
-                        <h3>Send Us a Message</h3>
-                        <p>Fill out the form below and we'll get back to you shortly</p>
+            <!-- Right Column — Details -->
+            <div class="contact-details-col">
+
+                <!-- Office Hours -->
+                <div class="detail-block detail-block--hours">
+                    <div class="detail-block-icon"><i class="fas fa-clock"></i></div>
+                    <div class="detail-block-body">
+                        <h3>Office Hours</h3>
+                        <ul class="hours-list">
+                            <li><span>Monday – Friday</span><span>9:00 AM – 6:00 PM</span></li>
+                            <li><span>Sunday</span><span>10:00 AM – 3:00 PM</span></li>
+                            <li><span>Saturday</span><span>Closed</span></li>
+                        </ul>
                     </div>
-                    
-                    <!-- Elfsight Contact Form Widget -->
-                    <script src="https://static.elfsight.com/platform/platform.js" async></script> 
-                    <div class="elfsight-app-881b9b4f-5e51-4454-9b2a-9e7d6f33a0e9" data-elfsight-app-lazy></div>
+                </div>
+
+                <!-- Why Contact Us -->
+                <div class="detail-block detail-block--why">
+                    <h3>Why Reach Out?</h3>
+                    <div class="why-items">
+                        <div class="why-item">
+                            <div class="why-icon"><i class="fas fa-chart-line"></i></div>
+                            <div>
+                                <h4>Free Property Assessment</h4>
+                                <p>Get a comprehensive evaluation of your property's potential.</p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-icon"><i class="fas fa-handshake"></i></div>
+                            <div>
+                                <h4>No Obligation Consultation</h4>
+                                <p>Learn how we can help with zero commitment required.</p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div>
+                                <h4>Tailored Management Plans</h4>
+                                <p>Solutions customized to your property and goals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency -->
+                <div class="detail-block detail-block--emergency">
+                    <div class="emergency-pulse"></div>
+                    <div class="emergency-body">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <h4>Emergency Maintenance</h4>
+                            <p>For urgent property issues, call our 24/7 hotline</p>
+                            <a href="tel:7186444666" class="emergency-number">(718) 644-4666</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social -->
+                <div class="detail-block detail-block--social">
+                    <h3>Follow Us</h3>
+                    <div class="social-row">
+                        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Map Section -->
-    <section class="map-section">
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.5441234567890!2d-73.8615!3d40.7282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQzJzQxLjUiTiA3M8KwNTEnNDEuNCJX!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus" 
-                width="100%" 
-                height="500" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
+    <section class="map-section" aria-label="Office location map">
+        <div class="map-header">
+            <h2>Find Our Office</h2>
+            <p>Located in the heart of Rego Park, Queens — easily accessible by subway and car.</p>
+        </div>
+        <div class="map-wrapper">
+            <iframe
+                title="Century One Management office location on Google Maps"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.5441234567890!2d-73.8615!3d40.7282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQzJzQxLjUiTiA3M8KwNTEnNDEuNCJX!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                width="100%"
+                height="500"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
+            <div class="map-overlay-card">
+                <img src="logo1.png" alt="Century One" class="map-card-logo">
+                <h4>Century One Management</h4>
+                <p>96-14 Queens Blvd<br>Rego Park, NY 11374</p>
+                <a href="https://maps.google.com/?q=96-14+Queens+Blvd+Rego+Park+NY+11374" target="_blank" rel="noopener" class="map-directions-btn">
+                    <i class="fas fa-directions"></i> Get Directions
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Frequently Asked Questions</h2>
-            <div class="accent-bar"></div>
-            <p class="section-subtitle">Quick answers to common questions about our services</p>
-        </div>
-
-        <div class="faq-container">
-            <div class="faq-grid">
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
-                        <h4>What areas do you serve?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We primarily serve properties throughout New York City and the surrounding metropolitan area, with a focus on Queens, Manhattan, and Brooklyn.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="faq-question">
-                        <h4>How quickly can you respond to maintenance requests?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We offer 24/7 emergency response for urgent issues. Non-emergency maintenance requests are typically addressed within 24-48 hours.</p>
+    <section class="faq-section" aria-label="Frequently asked questions">
+        <div class="faq-layout">
+            <div class="faq-header-col">
+                <span class="section-label">FAQ</span>
+                <h2>Common Questions</h2>
+                <p>Can't find what you're looking for? Don't hesitate to reach out — we're happy to help.</p>
+                <a href="#contact-form" class="faq-cta-btn">
+                    Ask a Question <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="faq-items-col">
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span itemprop="name">What areas of New York do you serve?</span>
+                        <span class="faq-icon"><span></span><span></span></span>
+                    </button>
+                    <div class="faq-panel" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">We manage properties throughout New York City and the surrounding metro area, with particular expertise in Queens, Manhattan, and Brooklyn. Our team handles everything from single-unit condos to large multi-family buildings.</p>
                     </div>
                 </div>
-
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="faq-question">
-                        <h4>What are your management fees?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our management fees vary based on property type, size, and specific service needs. Contact us for a free consultation and customized quote.</p>
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span itemprop="name">How fast do you respond to maintenance requests?</span>
+                        <span class="faq-icon"><span></span><span></span></span>
+                    </button>
+                    <div class="faq-panel" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Emergency issues receive immediate 24/7 response. Routine maintenance requests are typically addressed within 24 to 48 hours. All requests can be submitted through our tenant portal for easy tracking.</p>
                     </div>
                 </div>
-
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="faq-question">
-                        <h4>Do you handle tenant screening?</h4>
-                        <i class="fas fa-chevron-down"></i>
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span itemprop="name">What are your management fees?</span>
+                        <span class="faq-icon"><span></span><span></span></span>
+                    </button>
+                    <div class="faq-panel" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Fees depend on property type, size, and the scope of services required. We offer transparent pricing with no hidden costs. Contact us for a free, no-obligation consultation and customized quote.</p>
                     </div>
-                    <div class="faq-answer">
-                        <p>Yes, we provide comprehensive tenant screening including credit checks, employment verification, rental history, and background checks.</p>
+                </div>
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span itemprop="name">Do you handle tenant screening?</span>
+                        <span class="faq-icon"><span></span><span></span></span>
+                    </button>
+                    <div class="faq-panel" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Yes. Our thorough screening process includes credit checks, employment and income verification, rental history review, and background checks to ensure quality tenants for your property.</p>
+                    </div>
+                </div>
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span itemprop="name">How do I access the tenant portal?</span>
+                        <span class="faq-icon"><span></span><span></span></span>
+                    </button>
+                    <div class="faq-panel" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Current tenants can access the portal at centuryone.app.doorloop.com. From there you can pay rent, submit maintenance requests, view documents, and communicate with our team. New tenants receive login credentials upon move-in.</p>
                     </div>
                 </div>
             </div>
@@ -314,18 +372,13 @@
         <div class="footer-top">
             <div class="footer-container">
                 <div class="footer-grid">
-                    <!-- Company Info -->
                     <div class="footer-section">
                         <img src="logo1.png" alt="Century One Management" class="footer-logo">
                         <p>Elevating property management to new heights of excellence and innovation.</p>
                         <div class="social-links">
-                            <a href="#" class="social-link" aria-label="Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
+                            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         </div>
                     </div>
-
-                    <!-- Quick Links -->
                     <div class="footer-section">
                         <h3>Quick Links</h3>
                         <ul class="footer-links">
@@ -336,8 +389,6 @@
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div>
-
-                    <!-- Services -->
                     <div class="footer-section">
                         <h3>Our Services</h3>
                         <ul class="footer-links">
@@ -347,8 +398,6 @@
                             <li><a href="services.html#consulting">Investment Consulting</a></li>
                         </ul>
                     </div>
-
-                    <!-- Contact Info -->
                     <div class="footer-section">
                         <h3>Contact Us</h3>
                         <ul class="footer-contact">
@@ -369,7 +418,6 @@
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <div class="footer-container">
                 <p>&copy; 2025 Century One Management. All rights reserved.</p>
@@ -382,13 +430,12 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
+    <!-- Back to Top -->
     <button id="backToTop" class="back-to-top" aria-label="Back to Top">
         <i class="fas fa-chevron-up"></i>
     </button>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/contact.js"></script>
 </body>
