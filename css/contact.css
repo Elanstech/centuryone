@@ -1,40 +1,913 @@
 /* =============================================
-   CONTACT PAGE — REDESIGNED
-   Century One Management
+   CONTACT PAGE — COMPLETE CSS
+   All classes prefixed ct- to avoid style.css conflicts
    ============================================= */
 
-/* ---------- HERO SECTION ---------- */
-.contact-hero {
+/* -------- HERO -------- */
+.ct-hero {
     position: relative;
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(160deg, #012902 0%, #035206 40%, #046307 100%);
     overflow: hidden;
-    margin-top: 80px;
+    /* NO margin-top — the green bg extends behind the transparent header */
+    padding-top: 120px;
+    padding-bottom: 80px;
 }
 
-.hero-bg-shapes {
+.ct-hero-bg {
     position: absolute;
     inset: 0;
-    overflow: hidden;
     pointer-events: none;
     z-index: 0;
 }
 
-.hero-shape {
+.ct-hero-shape {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.06;
-    background: #D4AF37;
+    background: rgba(212, 175, 55, 0.07);
 }
 
-.hero-shape--1 {
-    width: 600px;
-    height: 600px;
-    top: -200px;
-    right: -100px;
+.ct-hero-shape--1 {
+    width: 650px;
+    height: 650px;
+    top: -250px;
+    right: -150px;
+    animation: ctFloat 22s ease-in-out infinite;
+}
+
+.ct-hero-shape--2 {
+    width: 450px;
+    height: 450px;
+    bottom: -150px;
+    left: -200px;
+    animation: ctFloat 28s ease-in-out infinite reverse;
+}
+
+@keyframes ctFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(25px, -20px) scale(1.04); }
+}
+
+.ct-hero-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    max-width: 850px;
+    padding: 0 2rem;
+}
+
+.ct-hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #D4AF37;
+    margin-bottom: 2.5rem;
+}
+
+.ct-hero-label i {
+    font-size: 1.4rem;
+}
+
+.ct-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.4rem, 5.5vw, 6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+.ct-hero h1 span {
+    color: #D4AF37;
+}
+
+.ct-hero p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.5rem, 1.8vw, 1.8rem);
+    line-height: 1.7;
+    opacity: 0.85;
+    max-width: 620px;
+    margin: 0 auto 4rem;
+}
+
+/* Hero Stats */
+.ct-hero-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3.5rem;
+}
+
+.ct-stat {
+    text-align: center;
+}
+
+.ct-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2rem;
+    font-weight: 700;
+    color: #D4AF37;
+    line-height: 1;
+    display: inline;
+}
+
+.ct-stat-suffix {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: #D4AF37;
+}
+
+.ct-stat small {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.6;
+    margin-top: 0.6rem;
+}
+
+.ct-stat-line {
+    width: 1px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* -------- QUICK CONTACT BAR -------- */
+.ct-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #fff;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 10;
+}
+
+.ct-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    padding: 2.4rem 2.5rem;
+    text-decoration: none;
+    color: var(--text, #333);
+    border-right: 1px solid rgba(0, 0, 0, 0.06);
+    transition: background 0.3s ease;
+    position: relative;
+}
+
+.ct-bar-item:last-child {
+    border-right: none;
+}
+
+.ct-bar-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #035206, #D4AF37);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.ct-bar-item:hover::after {
+    transform: scaleX(1);
+}
+
+.ct-bar-item:hover {
+    background: rgba(4, 99, 7, 0.02);
+}
+
+.ct-bar-item--accent {
+    background: linear-gradient(135deg, #035206, #046307);
+    color: #fff;
+}
+
+.ct-bar-item--accent:hover {
+    background: linear-gradient(135deg, #024105, #035206);
+}
+
+.ct-bar-item--accent::after {
+    display: none;
+}
+
+.ct-bar-item > i {
+    font-size: 2rem;
+    color: #035206;
+    width: 44px;
+    height: 44px;
+    background: rgba(4, 99, 7, 0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.ct-bar-item--accent > i {
+    background: rgba(255, 255, 255, 0.15);
+    color: #D4AF37;
+}
+
+.ct-bar-item:hover > i {
+    background: linear-gradient(135deg, #035206, #046307);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.ct-bar-item--accent:hover > i {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.ct-bar-item small {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light, #666);
+    margin-bottom: 0.15rem;
+}
+
+.ct-bar-item--accent small {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.ct-bar-item strong {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+/* -------- MAIN CONTACT SECTION -------- */
+.ct-main {
+    padding: 10rem 0;
+    background: #f9f9f7;
+}
+
+.ct-main-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4.5rem;
+    align-items: start;
+}
+
+/* Form Card */
+.ct-form-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    border: 1px solid rgba(4, 99, 7, 0.06);
+}
+
+.ct-form-header {
+    background: linear-gradient(135deg, #035206, #046307);
+    padding: 3.5rem 4rem;
+    color: #fff;
+}
+
+.ct-form-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    margin-bottom: 0.6rem;
+    color: #fff;
+}
+
+.ct-form-header p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.45rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.ct-form-body {
+    padding: 3rem 4rem 4rem;
+}
+
+/* Sidebar */
+.ct-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: sticky;
+    top: 110px;
+}
+
+.ct-block {
+    background: #fff;
+    border-radius: 14px;
+    padding: 2.8rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(4, 99, 7, 0.06);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.ct-block:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+    transform: translateY(-2px);
+}
+
+.ct-block-icon {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #035206, #046307);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 1.6rem;
+}
+
+.ct-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    color: var(--text, #333);
+    margin-bottom: 1.4rem;
+}
+
+/* Hours */
+.ct-hours {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ct-hours li {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-light, #666);
+}
+
+.ct-hours li:last-child {
+    border-bottom: none;
+}
+
+.ct-hours li span:last-child {
+    font-weight: 600;
+    color: var(--text, #333);
+}
+
+/* Why List */
+.ct-why-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.ct-why {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+}
+
+.ct-why > i {
+    width: 38px;
+    height: 38px;
+    background: rgba(4, 99, 7, 0.07);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #035206;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.ct-why strong {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    color: var(--text, #333);
+    margin-bottom: 0.2rem;
+}
+
+.ct-why p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: var(--text-light, #666);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Emergency */
+.ct-block--emergency {
+    background: linear-gradient(135deg, #fff5f5, #fff0ed);
+    border-color: rgba(255, 107, 107, 0.2);
+    display: flex;
+    gap: 1.4rem;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.ct-emergency-dot {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 10px;
+    height: 10px;
+    background: #ff6b6b;
+    border-radius: 50%;
+    animation: ctPulse 2s ease-in-out infinite;
+}
+
+@keyframes ctPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(255, 107, 107, 0); }
+}
+
+.ct-emergency-icon {
+    font-size: 2rem;
+    color: #ff6b6b;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+}
+
+.ct-block--emergency strong {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: var(--text, #333);
+    margin-bottom: 0.3rem;
+}
+
+.ct-block--emergency p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: var(--text-light, #666);
+    margin: 0 0 0.8rem;
+}
+
+.ct-emergency-phone {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #ff6b6b;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.ct-emergency-phone:hover {
+    color: #e74c3c;
+}
+
+/* Social */
+.ct-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.ct-social a {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(4, 99, 7, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #035206;
+    font-size: 1.7rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.ct-social a:hover {
+    background: linear-gradient(135deg, #035206, #046307);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(3, 82, 6, 0.25);
+}
+
+/* -------- MAP -------- */
+.ct-map {
+    background: #fff;
+    padding-top: 6rem;
+}
+
+.ct-map-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+}
+
+.ct-map-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 3.5vw, 3.4rem);
+    color: var(--text, #333);
+    margin-bottom: 1rem;
+}
+
+.ct-map-header p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: var(--text-light, #666);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.ct-map-wrap {
+    position: relative;
+    height: 480px;
+}
+
+.ct-map-wrap iframe {
+    width: 100%;
+    height: 100%;
+    filter: saturate(0.85) contrast(1.05);
+    transition: filter 0.5s ease;
+}
+
+.ct-map-wrap:hover iframe {
+    filter: saturate(1) contrast(1);
+}
+
+.ct-map-card {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 4rem;
+    background: #fff;
+    padding: 2.2rem 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    z-index: 5;
+    max-width: 280px;
+}
+
+.ct-map-logo {
+    height: 30px;
+    width: auto;
+    margin-bottom: 0.8rem;
+}
+
+.ct-map-card strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    color: var(--text, #333);
+    margin-bottom: 0.4rem;
+}
+
+.ct-map-card p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: var(--text-light, #666);
+    line-height: 1.5;
+    margin: 0 0 1.4rem;
+}
+
+.ct-map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, #035206, #046307);
+    color: #fff;
+    padding: 0.9rem 1.8rem;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.ct-map-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(3, 82, 6, 0.3);
+}
+
+/* -------- FAQ -------- */
+.ct-faq {
+    padding: 10rem 0;
+    background: #f9f9f7;
+}
+
+.ct-faq-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 6rem;
+    align-items: start;
+}
+
+.ct-faq-left {
+    position: sticky;
+    top: 120px;
+}
+
+.ct-label {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #D4AF37;
+    margin-bottom: 1.2rem;
+}
+
+.ct-faq-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 3.5vw, 3.8rem);
+    color: var(--text, #333);
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+}
+
+.ct-faq-left p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: var(--text-light, #666);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+}
+
+.ct-faq-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #035206, #046307);
+    color: #fff;
+    padding: 1.3rem 2.8rem;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.ct-faq-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(3, 82, 6, 0.3);
+    gap: 1.3rem;
+}
+
+/* FAQ Items */
+.ct-faq-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ct-faq-item {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(4, 99, 7, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.ct-faq-item:hover {
+    border-color: rgba(4, 99, 7, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.ct-faq-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2.4rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    gap: 2rem;
+}
+
+.ct-faq-trigger > span:first-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--text, #333);
+    line-height: 1.4;
+}
+
+.ct-faq-plus {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.ct-faq-plus span {
+    position: absolute;
+    background: #035206;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.ct-faq-plus span:first-child {
+    top: 50%;
+    left: 4px;
+    right: 4px;
+    height: 2px;
+    transform: translateY(-50%);
+}
+
+.ct-faq-plus span:last-child {
+    left: 50%;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    transform: translateX(-50%);
+}
+
+.ct-faq-item.active .ct-faq-plus span:last-child {
+    transform: translateX(-50%) scaleY(0);
+}
+
+.ct-faq-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ct-faq-item.active .ct-faq-panel {
+    max-height: 300px;
+}
+
+.ct-faq-panel p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.45rem;
+    color: var(--text-light, #666);
+    line-height: 1.7;
+    padding: 0 2.4rem 2.2rem;
+    margin: 0;
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 1200px) {
+    .ct-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ct-bar-item {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .ct-main-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .ct-sidebar {
+        position: relative;
+        top: 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .ct-faq-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .ct-faq-left {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .ct-hero {
+        min-height: auto;
+        padding-top: 140px;
+        padding-bottom: 70px;
+    }
+
+    .ct-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .ct-map-card {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        max-width: 100%;
+        margin: -2rem 2rem 0;
+        z-index: 5;
+    }
+
+    .ct-map-wrap {
+        height: 380px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ct-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .ct-bar-item {
+        border-right: none;
+    }
+
+    .ct-main {
+        padding: 6rem 0;
+    }
+
+    .ct-main-grid {
+        padding: 0 2rem;
+    }
+
+    .ct-form-header {
+        padding: 2.5rem;
+    }
+
+    .ct-form-body {
+        padding: 2rem 2.5rem 3rem;
+    }
+
+    .ct-block {
+        padding: 2.2rem;
+    }
+
+    .ct-faq {
+        padding: 6rem 0;
+    }
+
+    .ct-faq-grid {
+        padding: 0 2rem;
+    }
+
+    .ct-hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .ct-stat-line {
+        width: 40px;
+        height: 1px;
+    }
+
+    .ct-map-header {
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .ct-hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .ct-hero p {
+        font-size: 1.4rem;
+    }
+
+    .ct-stat-num {
+        font-size: 3.4rem;
+    }
+
+    .ct-form-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .ct-map-card {
+        margin: -1.5rem 1rem 0;
+    }
+
+    .ct-faq-trigger {
+        padding: 1.6rem 1.8rem;
+    }
+
+    .ct-faq-trigger > span:first-child {
+        font-size: 1.4rem;
+    }
+
+    .ct-faq-panel p {
+        padding: 0 1.8rem 2rem;
+        font-size: 1.35rem;
+    }
+}    right: -100px;
     animation: floatShape 20s ease-in-out infinite;
 }
 
