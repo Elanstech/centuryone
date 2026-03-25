@@ -33,7 +33,10 @@
     <!-- Landing Page Specific Styles -->
     <link rel="stylesheet" href="./css/landing.css">
 
-    <!-- Schema: Landing Page -->
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -114,7 +117,7 @@
 
 
     <!-- =============================================
-         LANDING PAGE HERO — CONVERSION FOCUSED
+         LANDING PAGE HERO
     ============================================= -->
     <section class="lp-hero">
         <div class="lp-hero-overlay"></div>
@@ -155,6 +158,8 @@
                     </a>
                 </div>
             </div>
+
+            <!-- HERO FORM -->
             <div class="lp-hero-form-wrap" data-aos="fade-left">
                 <div class="lp-form-card">
                     <div class="lp-form-header">
@@ -162,9 +167,58 @@
                         <p>No obligation. Same-day response.</p>
                     </div>
                     <div class="lp-form-body">
-                        <!-- Elfsight Contact Form Widget -->
-                        <script src="https://static.elfsight.com/platform/platform.js" async></script>
-                        <div class="elfsight-app-881b9b4f-5e51-4454-9b2a-9e7d6f33a0e9" data-elfsight-app-lazy></div>
+                        <div id="heroFormWrapper">
+                            <div class="lp-field">
+                                <label for="hero-name">Full Name <span class="lp-req">*</span></label>
+                                <div class="lp-input-wrap">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="hero-name" placeholder="John Smith" required>
+                                </div>
+                            </div>
+                            <div class="lp-field">
+                                <label for="hero-phone">Phone Number <span class="lp-req">*</span></label>
+                                <div class="lp-input-wrap">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <input type="tel" id="hero-phone" placeholder="(718) 555-1234" required>
+                                </div>
+                            </div>
+                            <div class="lp-field">
+                                <label for="hero-email">Email Address <span class="lp-req">*</span></label>
+                                <div class="lp-input-wrap">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" id="hero-email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+                            <div class="lp-field">
+                                <label for="hero-message">Message</label>
+                                <div class="lp-input-wrap lp-textarea-wrap">
+                                    <i class="fas fa-comment-dots"></i>
+                                    <textarea id="hero-message" rows="3" placeholder="Tell us about your property..."></textarea>
+                                </div>
+                            </div>
+                            <button type="button" id="heroFormBtn" class="lp-submit-btn" onclick="submitForm('hero')">
+                                <span class="lp-btn-text">Get My Free Consultation</span>
+                                <span class="lp-btn-loading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+                                <i class="fas fa-arrow-right lp-btn-arrow"></i>
+                            </button>
+                        </div>
+                        <!-- Success State -->
+                        <div id="heroFormSuccess" class="lp-form-success" style="display:none;">
+                            <div class="lp-success-icon"><i class="fas fa-check-circle"></i></div>
+                            <h4>Thank You!</h4>
+                            <p>Your consultation request has been submitted. We'll get back to you within the same business day.</p>
+                            <a href="tel:7186444666" class="lp-success-call">
+                                <i class="fas fa-phone-alt"></i> Need immediate help? Call (718) 644-4666
+                            </a>
+                        </div>
+                        <!-- Error State -->
+                        <div id="heroFormError" class="lp-form-error" style="display:none;">
+                            <div class="lp-error-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            <p>Something went wrong. Please try again or call us directly.</p>
+                            <a href="tel:7186444666" class="lp-error-call">
+                                <i class="fas fa-phone-alt"></i> Call (718) 644-4666
+                            </a>
+                        </div>
                     </div>
                     <div class="lp-form-footer">
                         <div class="lp-form-trust">
@@ -251,7 +305,7 @@
 
 
     <!-- =============================================
-         SERVICES OVERVIEW — WHAT'S INCLUDED
+         SERVICES OVERVIEW
     ============================================= -->
     <section class="lp-services">
         <div class="lp-section-container">
@@ -313,7 +367,7 @@
 
 
     <!-- =============================================
-         HOW IT WORKS — 4 STEPS
+         HOW IT WORKS
     ============================================= -->
     <section class="lp-process">
         <div class="lp-section-container">
@@ -479,7 +533,7 @@
 
 
     <!-- =============================================
-         TRUST / CREDENTIALS STRIP
+         TRUST STRIP
     ============================================= -->
     <section class="lp-trust-strip">
         <div class="lp-section-container">
@@ -510,7 +564,7 @@
 
 
     <!-- =============================================
-         FAQ — OBJECTION HANDLING
+         FAQ
     ============================================= -->
     <section class="lp-faq">
         <div class="lp-section-container">
@@ -573,7 +627,6 @@
          FINAL CTA — CONTACT SECTION
     ============================================= -->
     <section class="lp-final-cta" id="lp-contact">
-        <div class="lp-cta-overlay"></div>
         <div class="lp-section-container">
             <div class="lp-final-cta-grid">
                 <div class="lp-final-cta-text" data-aos="fade-right">
@@ -615,6 +668,8 @@
                         <span><i class="fas fa-check-circle"></i> Same-Day Response</span>
                     </div>
                 </div>
+
+                <!-- BOTTOM FORM -->
                 <div class="lp-final-cta-form" data-aos="fade-left">
                     <div class="lp-form-card">
                         <div class="lp-form-header">
@@ -622,8 +677,58 @@
                             <p>Tell us about your property and we'll get back to you today.</p>
                         </div>
                         <div class="lp-form-body">
-                            <!-- Same Elfsight widget or duplicate for bottom form -->
-                            <div class="elfsight-app-881b9b4f-5e51-4454-9b2a-9e7d6f33a0e9" data-elfsight-app-lazy></div>
+                            <div id="bottomFormWrapper">
+                                <div class="lp-field">
+                                    <label for="bottom-name">Full Name <span class="lp-req">*</span></label>
+                                    <div class="lp-input-wrap">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="bottom-name" placeholder="John Smith" required>
+                                    </div>
+                                </div>
+                                <div class="lp-field">
+                                    <label for="bottom-phone">Phone Number <span class="lp-req">*</span></label>
+                                    <div class="lp-input-wrap">
+                                        <i class="fas fa-phone-alt"></i>
+                                        <input type="tel" id="bottom-phone" placeholder="(718) 555-1234" required>
+                                    </div>
+                                </div>
+                                <div class="lp-field">
+                                    <label for="bottom-email">Email Address <span class="lp-req">*</span></label>
+                                    <div class="lp-input-wrap">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" id="bottom-email" placeholder="john@example.com" required>
+                                    </div>
+                                </div>
+                                <div class="lp-field">
+                                    <label for="bottom-message">Message</label>
+                                    <div class="lp-input-wrap lp-textarea-wrap">
+                                        <i class="fas fa-comment-dots"></i>
+                                        <textarea id="bottom-message" rows="3" placeholder="Tell us about your property..."></textarea>
+                                    </div>
+                                </div>
+                                <button type="button" id="bottomFormBtn" class="lp-submit-btn" onclick="submitForm('bottom')">
+                                    <span class="lp-btn-text">Get My Free Consultation</span>
+                                    <span class="lp-btn-loading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+                                    <i class="fas fa-arrow-right lp-btn-arrow"></i>
+                                </button>
+                            </div>
+                            <!-- Success State -->
+                            <div id="bottomFormSuccess" class="lp-form-success" style="display:none;">
+                                <div class="lp-success-icon"><i class="fas fa-check-circle"></i></div>
+                                <h4>Thank You!</h4>
+                                <p>Your consultation request has been submitted. We'll get back to you within the same business day.</p>
+                                <a href="tel:7186444666" class="lp-success-call">
+                                    <i class="fas fa-phone-alt"></i> Need immediate help? Call (718) 644-4666
+                                </a>
+                            </div>
+                            <!-- Error State -->
+                            <div id="bottomFormError" class="lp-form-error" style="display:none;">
+                                <div class="lp-error-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                                <p>Something went wrong. Please try again or call us directly.</p>
+                                <a href="tel:7186444666" class="lp-error-call">
+                                    <i class="fas fa-phone-alt"></i> Call (718) 644-4666
+                                </a>
+                            </div>
                         </div>
                         <div class="lp-form-footer">
                             <div class="lp-form-trust">
@@ -705,7 +810,7 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- Sticky Mobile CTA (landing page only) -->
+    <!-- Sticky Mobile CTA -->
     <div class="lp-sticky-cta">
         <a href="tel:7186444666" class="lp-sticky-call">
             <i class="fas fa-phone-alt"></i>
@@ -722,11 +827,144 @@
     <script src="./js/script.js"></script>
     <script>
     /* ============================================================
-       LANDING PAGE SPECIFIC JS
+       LANDING PAGE JS — EmailJS + FAQ + Sticky CTA
     ============================================================ */
+
+    /* -------------------------------------------------------
+       EmailJS CONFIGURATION
+       -------------------------------------------------------
+       REPLACE these 3 values with your actual EmailJS credentials:
+       1. Go to https://www.emailjs.com/ and create a free account
+       2. Add an Email Service (Gmail, Outlook, etc.) → copy SERVICE_ID
+       3. Create an Email Template → copy TEMPLATE_ID
+       4. Go to Account → copy PUBLIC_KEY
+    ------------------------------------------------------- */
+    const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // ← Replace
+    const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // ← Replace
+    const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // ← Replace
+
+    // Initialize EmailJS
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+
+
+    /* -------------------------------------------------------
+       PHONE FORMAT HELPER
+    ------------------------------------------------------- */
+    function formatPhone(input) {
+        let val = input.value.replace(/\D/g, '');
+        if (val.length > 10) val = val.substring(0, 10);
+        if (val.length >= 7) {
+            input.value = `(${val.substring(0,3)}) ${val.substring(3,6)}-${val.substring(6)}`;
+        } else if (val.length >= 4) {
+            input.value = `(${val.substring(0,3)}) ${val.substring(3)}`;
+        } else if (val.length > 0) {
+            input.value = `(${val}`;
+        }
+    }
+
+    // Attach phone formatter to both phone inputs
+    document.addEventListener('DOMContentLoaded', () => {
+        ['hero-phone', 'bottom-phone'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('input', () => formatPhone(el));
+            }
+        });
+    });
+
+
+    /* -------------------------------------------------------
+       FORM SUBMISSION
+    ------------------------------------------------------- */
+    function submitForm(prefix) {
+        const nameEl    = document.getElementById(`${prefix}-name`);
+        const phoneEl   = document.getElementById(`${prefix}-phone`);
+        const emailEl   = document.getElementById(`${prefix}-email`);
+        const messageEl = document.getElementById(`${prefix}-message`);
+        const btn       = document.getElementById(`${prefix}FormBtn`);
+        const wrapper   = document.getElementById(`${prefix}FormWrapper`);
+        const success   = document.getElementById(`${prefix}FormSuccess`);
+        const error     = document.getElementById(`${prefix}FormError`);
+
+        // Reset error styles
+        [nameEl, phoneEl, emailEl].forEach(el => el.classList.remove('lp-input-error'));
+
+        // Validate
+        let isValid = true;
+
+        if (!nameEl.value.trim()) {
+            nameEl.classList.add('lp-input-error');
+            isValid = false;
+        }
+
+        const phoneDigits = phoneEl.value.replace(/\D/g, '');
+        if (phoneDigits.length < 10) {
+            phoneEl.classList.add('lp-input-error');
+            isValid = false;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailEl.value.trim())) {
+            emailEl.classList.add('lp-input-error');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            // Shake the first invalid field
+            const firstErr = wrapper.querySelector('.lp-input-error');
+            if (firstErr) {
+                firstErr.focus();
+                firstErr.closest('.lp-input-wrap').classList.add('lp-shake');
+                setTimeout(() => {
+                    firstErr.closest('.lp-input-wrap').classList.remove('lp-shake');
+                }, 500);
+            }
+            return;
+        }
+
+        // Show loading
+        btn.querySelector('.lp-btn-text').style.display = 'none';
+        btn.querySelector('.lp-btn-arrow').style.display = 'none';
+        btn.querySelector('.lp-btn-loading').style.display = 'inline-flex';
+        btn.disabled = true;
+
+        // Build template params
+        // These variable names must match your EmailJS template variables
+        const templateParams = {
+            from_name:  nameEl.value.trim(),
+            phone:      phoneEl.value.trim(),
+            from_email: emailEl.value.trim(),
+            message:    messageEl.value.trim() || '(No message provided)',
+            source:     'Google Ads Landing Page'
+        };
+
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+            .then(() => {
+                // Success
+                wrapper.style.display = 'none';
+                success.style.display = 'block';
+
+                // Fire Google Ads conversion event
+                if (typeof gtag === 'function') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-16824946147/REPLACE_WITH_CONVERSION_LABEL'
+                    });
+                }
+            })
+            .catch((err) => {
+                console.error('EmailJS error:', err);
+                wrapper.style.display = 'none';
+                error.style.display = 'block';
+            });
+    }
+
+
+    /* -------------------------------------------------------
+       LANDING PAGE — FAQ, STICKY CTA, SMOOTH SCROLL
+    ------------------------------------------------------- */
     document.addEventListener('DOMContentLoaded', () => {
 
-        /* FAQ Accordion (reuse pattern from main site) */
+        /* FAQ Accordion */
         const lpFaqItems = document.querySelectorAll('.lp-faq .faq-item');
         lpFaqItems.forEach(item => {
             const q = item.querySelector('.faq-question');
@@ -750,21 +988,17 @@
             if (fb) fb.setAttribute('aria-expanded', 'true');
         }
 
-        /* Sticky CTA: show after scrolling past hero */
+        /* Sticky CTA — show after scrolling past hero */
         const stickyCTA = document.querySelector('.lp-sticky-cta');
         const lpHero = document.querySelector('.lp-hero');
         if (stickyCTA && lpHero) {
             window.addEventListener('scroll', () => {
                 const heroBottom = lpHero.offsetTop + lpHero.offsetHeight;
-                if (window.pageYOffset > heroBottom - 200) {
-                    stickyCTA.classList.add('visible');
-                } else {
-                    stickyCTA.classList.remove('visible');
-                }
+                stickyCTA.classList.toggle('visible', window.pageYOffset > heroBottom - 200);
             });
         }
 
-        /* Smooth scroll for landing page anchor links */
+        /* Smooth scroll for #lp- anchors */
         document.querySelectorAll('a[href^="#lp-"]').forEach(link => {
             link.addEventListener('click', (e) => {
                 const id = link.getAttribute('href');
@@ -778,6 +1012,13 @@
                         behavior: 'smooth'
                     });
                 }
+            });
+        });
+
+        /* Remove focus ring on input when user clicks away */
+        document.querySelectorAll('.lp-field input, .lp-field textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.classList.remove('lp-input-error');
             });
         });
     });
