@@ -682,3 +682,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 }); // END DOMContentLoaded
+
+
+/* Google Ads: count a tap on any phone link as a "Contact" lead (once per page view). Added Nov 24 2026. */
+(function () {
+    var sent = false;
+    document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+        if (!a || sent || typeof gtag !== 'function') return;
+        sent = true;
+        gtag('event', 'conversion', { 'send_to': 'AW-16824946147/eW6_CMWT9c4bEOOb4dY-' });
+    });
+})();
